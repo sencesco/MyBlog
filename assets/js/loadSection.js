@@ -1,21 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    function loadHTML(sectionId, url) {
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById(sectionId).innerHTML = data;
-                if (sectionId === 'sidebar') {
-                    initializeDarkModeToggle(); // Reinitialize dark mode script
-                }
-            })
-            .catch(error => console.error(`Error loading ${url}:`, error));
-    }
-
     // Function to toggle dark mode
     function toggleDarkMode() {
         const body = document.body;
@@ -67,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to initialize dark mode
     function initializeDarkMode() {
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
         const savedDarkMode = localStorage.getItem('darkMode');
 
         if (savedDarkMode === 'true') {
@@ -75,38 +57,11 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             applyLightMode();
         }
-
-        darkModeToggle.addEventListener('click', toggleDarkMode);
     }
 
-    // Initialize dark mode as soon as possible
-    (function() {
-        const savedDarkMode = localStorage.getItem('darkMode');
-        if (savedDarkMode === 'true') {
-            document.body.classList.add('dark-mode');
-        }
-    })();
+    // Event listener for the dark mode toggle button
+    document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-    // Initialize dark mode when the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', initializeDarkMode);
-
-    // Re-initialize dark mode when the sidebar is loaded
-    function initializeDarkModeToggle() {
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', toggleDarkMode);
-        }
-        
-        // Apply the correct mode based on saved preference
-        const savedDarkMode = localStorage.getItem('darkMode');
-        if (savedDarkMode === 'true') {
-            applyDarkMode();
-        } else {
-            applyLightMode();
-        }
-    }
-
-    // Load sidebar and pwd_man content with corrected paths
-    loadHTML('sidebar', '/templates/sidebar.html');
-    loadHTML('footer', '/templates/footer.html');
+    // Initialize dark mode based on saved preference
+    initializeDarkMode();
 });

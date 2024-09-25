@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% if page.url == "/" %}
+            {{ site.title }}
+        {% else %}
+            {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+        {% endif %}
+    </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+    <script src="{{ '/assets/js/loadSection.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+</head>
+<body></body>
+    <div id="page-container">
+        <div id="sidebar">
+            {% include sidebar.html %}
+        </div>
+        <header id="main-page-header">
+            <div>
+                <h1>{{ page.title }}</h1>
+            </div>
+        </header>
+        <div id="about-container">
+            <div class="a-text">
+                <span class="a-head">Hi, I am Somchai Kradingthong <span>
+                <br><br>
+                <span class="a-body">
+                    {{ content }}
+                </span>
+            </div>
+            <div class="a-contact">
+                <span><h3>Contact me</h3></span>
+                <span>
+                    <br>
+                    <a class="link" href="mailto:somchai.kdt@gmail.com">
+                        <img class="social" src="{{ '/assets/image/mail_2.png' | relative_url }}" alt="mail icon">
+                    </a>
+                </span>
+                <span>
+                    <a class="link" href="https://www.linkedin.com/in/somchai-kradingthong-b1693b144/" target="_blank">
+                        <img class="social" src="{{ '/assets/image/linkedin_2.png' | relative_url }}" alt ="linkedin icon" style="width: auto;">
+                    </a>
+                </span>
+                <span>
+                    <a class="link" href="https://github.com/sencesco" target="_blank">
+                        <img class="social" src="{{ '/assets/image/github_2.png' | relative_url }}" alt ="github icon" style="width: auto;">
+                    </a>
+                </span>
+                <span>
+                    <br><br><br>
+                    Can download my CV <a href="{{ site.baseurl }}/assets/cv/somchai_cv.pdf" target="_blank">here</a>
+                </span>
+            </div>
+            <div class="a-img">
+                <img class="about-img" src="{{ '/assets/image/about.jpg' | relative_url }}" alt="image of Somchai Kradingthong">
+            </div>
+        </div>
+    </div>
+    <!-- Placeholder for the footer -->
+    <div id="footer">
+        {% include footer.html %}
+    </div>
+</body>
+</html>

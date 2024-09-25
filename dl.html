@@ -1,0 +1,15 @@
+---
+layout: home
+title: Deep Learning
+category: DL
+---
+
+<div class="category-posts">
+  {% for post in site.categories[page.category] %}
+    <article class="post-preview">
+      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+    </article>
+  {% endfor %}
+</div>

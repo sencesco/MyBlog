@@ -3,27 +3,25 @@
         <div class="grid-item">
             <span class="description">
                 <h3>Welcome to My Blog</h3>
-                <br>
-                <p>You can find more about my working.</p>
+                {{ site.description }}
             </span>
         </div>
         <div class="grid-item-2">
             <span >
                 <h3>Contact Me</h3>
-                <br>
                 <span>
                     <a class="link" href="mailto:somchai.kdt@gmail.com">
-                        <img class="social" src="/static/asssets/img/mail.png" alt ="mail icon">
+                        <img class="social" src="{{ '/assets/image/mail.png' | relative_url }}" alt ="mail icon">
                         </a>
                     </span>
                 <span>
                     <a class="link" href="https://www.linkedin.com/in/somchai-kradingthong-b1693b144/" target="_blank">
-                        <img class="social" src="/static/asssets/img/linkedin.png" alt ="linkedin icon">
+                        <img class="social" src="{{ '/assets/image/linkedin.png' | relative_url }}" alt ="linkedin icon">
                         </a>
                     </span>
                 <span>
                     <a class="link" href="https://github.com/sencesco" target="_blank">
-                        <img class="social" src="/static/asssets/img/github.png" alt ="github icon">
+                        <img class="social" src="{{ '/assets/image/github.png' | relative_url }}" alt ="github icon">
                         </a>
                     </span>
             </span>
