@@ -10,10 +10,11 @@
             {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
         {% endif %}
     </title>
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/favicon/SK_8.ico" alt="SK icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-    <script src="{{ '/assets/js/loadSection.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
+    <script src="{{ site.baseurl }}/assets/js/loadSection.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/script.js"></script>
 </head>
 <body>
     <div id="page-container">
@@ -54,7 +55,7 @@
             </div>
             
             <div id="c-s-imgHead">
-                <img src="{{ page.image-content }}" alt="{{ page.title }}">
+                <img src="{{ site.baseurl }}{{ page.image-content }}" alt="{{ page.title }}">
             </div>
             <!-- Example of content table in YY-MM-DD-projectName.markdown
             <div id="c-s-hlist">
@@ -72,15 +73,15 @@
                     <span class="share-container">
                         Share:
                         <button class="share-button-x" onclick="shareTwitter()">
-                            <img class="share-icon" src="{{ '/assets/image/X_icon.svg' | relative_url }}" alt="Twitter Icon">
+                            <img class="share-icon" src="{{ site.baseurl }}/assets/image/X_icon.svg" alt="Twitter Icon">
                             Tweet
                         </button>
                         <button class="share-button-fb" onclick="shareFacebook()">
-                            <img class="share-icon" src="{{ '/assets/image/facebook.png' | relative_url }}" alt="Facebook Icon">
+                            <img class="share-icon" src="{{ site.baseurl }}/assets/image/facebook.png" alt="Facebook Icon">
                             Share
                         </button>
                         <button class="share-button-lnk" onclick="shareLinkedin()">
-                            <img class="share-icon" src="{{ '/assets/image/linkedin_3.png' | relative_url }}" alt="Linkedin Icon">
+                            <img class="share-icon" src="{{ site.baseurl }}/assets/image/linkedin_3.png" alt="Linkedin Icon">
                             Share
                         </button>
                     </span>

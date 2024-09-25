@@ -10,10 +10,11 @@
             {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
         {% endif %}
     </title>
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/favicon/SK_8.ico" alt="SK icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-    <script src="{{ '/assets/js/loadSection.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
+    <script src="{{ site.baseurl }}/assets/js/loadSection.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/script.js"></script>
 </head>
 <body></body>
     <div id="page-container">
@@ -38,26 +39,26 @@
                 <span>
                     <br>
                     <a class="link" href="mailto:somchai.kdt@gmail.com">
-                        <img class="social" src="{{ '/assets/image/mail_2.png' | relative_url }}" alt="mail icon">
+                        <img class="social" src="{{ site.baseurl }}/assets/image/mail_2.png" alt="mail icon">
                     </a>
                 </span>
                 <span>
                     <a class="link" href="https://www.linkedin.com/in/somchai-kradingthong-b1693b144/" target="_blank">
-                        <img class="social" src="{{ '/assets/image/linkedin_2.png' | relative_url }}" alt ="linkedin icon" style="width: auto;">
+                        <img class="social" src="{{ site.baseurl }}/assets/image/linkedin_2.png" alt ="linkedin icon" style="width: auto;">
                     </a>
                 </span>
                 <span>
                     <a class="link" href="https://github.com/sencesco" target="_blank">
-                        <img class="social" src="{{ '/assets/image/github_2.png' | relative_url }}" alt ="github icon" style="width: auto;">
+                        <img class="social" src="{{ site.baseurl }}/assets/image/github_2.png" alt ="github icon" style="width: auto;">
                     </a>
                 </span>
                 <span>
                     <br><br><br>
-                    Can download my CV <a href="{{ site.baseurl }}/assets/cv/somchai_cv.pdf" target="_blank">here</a>
+                    Can download my CV <a href="{{ site.baseurl }}/assets/cv/somchai-kra_cv.pdf" target="_blank">here</a>
                 </span>
             </div>
             <div class="a-img">
-                <img class="about-img" src="{{ '/assets/image/about.jpg' | relative_url }}" alt="image of Somchai Kradingthong">
+                <img class="about-img" src="{{ site.baseurl }}/assets/image/about.jpg" alt="image of Somchai Kradingthong">
             </div>
         </div>
     </div>

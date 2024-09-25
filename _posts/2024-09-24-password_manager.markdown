@@ -7,7 +7,7 @@ excerpt: >
 date: 2023-08-23
 categories: ["AI", "DL"]
 image: https://raw.githubusercontent.com/sencesco/Application/main/Password%20Manager%20V.1.1/logo.png
-image-content: /assets/image/test.png
+image-content: /assets/image/project_image/test.png
 read_time: 5
 github-repo: https://github.com/sencesco/Machine-Learning/blob/main/Frozen%20Lake_RL.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/blob/main/Frozen%20Lake_RL.ipynb
