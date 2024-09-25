@@ -20,17 +20,18 @@
 
 title: Somchai Kradingthong
 email: somchai.kdt@gmail.com
-description: >+
+description: >
   This blog explores AI, ML, DL, 
   and miscellaneous things that I do.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://somchai_kra.me" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://sencesco.github.io" # the base hostname & protocol for your site
+baseurl: "/MyBlog" # repository name, remove the extra baseurl key
 github_username: sencesco
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

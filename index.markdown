@@ -5,7 +5,7 @@ title: All Posts
 
 {% for post in site.posts %}
 <div class="project">
-    <img src="{{ post.image }}" width="100" height="100">
+    <img src="{{ site.baseurl }}{{ post.image }}" width="100" height="100">
     <h2>{{ post.title }}</h2>
     <p class="pj_tag">#
         {% for category in post.categories %}
