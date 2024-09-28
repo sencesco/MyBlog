@@ -325,7 +325,16 @@
   .dark-mode .c-s-content code:not(#code-block) {
     background-color: #4f4f4f;
   }
-  
+
+  .custom-download-link a {
+    text-decoration: none;
+    color: #43b2f3;
+  }
+
+  .custom-download-link a:hover {
+      text-decoration: underline;
+  }
+
   #c-s-social {
     margin-top: 40px;
   }

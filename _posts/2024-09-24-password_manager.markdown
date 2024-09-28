@@ -27,9 +27,15 @@ github-repo: https://github.com/sencesco/Application/tree/main/Password%20Manage
 {{ site.tabc }} Password Manager is a secure application designed to help users store, manage, and organize their passwords in one centralized location. The application employs strong encryption techniques to ensure that all user credentials are kept safe and accessible only to the user. With a user-friendly interface, it simplifies the process of creating and managing strong passwords, enhancing overall security for online accounts.
 
 ## Download
-{{ site.tabc }} You can download the latest version of the application as portable here:
-- [Password_Manager_main_V.1.2.0](https://github.com/sencesco/Application/blob/main/Password%20Manager%20V.1.2.0/pwd-mgr-v1.2.0.rar)<br>
-
+<div class="custom-download-link">
+    <ul>
+        <li>
+        <a href="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/pwd-mgr-v1.2.0.rar">
+            Password_Manager_main_V.1.2.0
+        </a>
+        </li>
+    </ul>
+</div>
 After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.exe.
 
 ## Feature
@@ -103,4 +109,4 @@ https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%
 ## Closing words
 {{ site.tabc }} That’s a wrap! I hope this showcase gives you a solid understanding of how the Password Manager works and inspires you to implement similar projects. You’re now equipped to manage passwords securely!
 
-If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!
+{{ site.tabc }} If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!
