@@ -326,15 +326,6 @@
     background-color: #4f4f4f;
   }
   
-  .c-s-content a {
-    color: #43b2f3;
-    text-decoration: none;
-  }
-  
-  .c-s-content a:hover {
-    text-decoration: underline;
-  }
-  
   #c-s-social {
     margin-top: 40px;
   }
