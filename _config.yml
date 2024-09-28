@@ -7,6 +7,8 @@
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# 'bundle exec jekyll serve --host 0.0.0.0'. Access the Site from Your Mobile Device: http://<your_computer_ip>:4000
+
 #
 # If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
@@ -31,6 +33,9 @@ github_username: sencesco
 theme: minima
 plugins:
   - jekyll-feed
+
+# Content settings
+tabc: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  # tab character = 4 spaces
 
 
 # Exclude from processing.

@@ -4,10 +4,12 @@ title: Machine Learning
 category: ML
 ---
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/categories.css">
+
 <div class="category-posts">
   {% for post in site.categories[page.category] %}
     <article class="post-preview">
-      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <h2><a href="{{ site.baseurl }}{{ post.url }}" target="_blank">{{ post.title }}</a></h2>
       <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
       <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
     </article>

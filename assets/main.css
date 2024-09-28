@@ -96,7 +96,6 @@
   
   /*-------- index page-------- */
   #project-container {
-  
     display: flex;
     flex-wrap: wrap;
     width: 80%;
@@ -140,6 +139,15 @@
     color: #dfdcdc; 
   }
   
+  .project a.pj_name {
+    text-decoration: none;
+    color: #43b2f3;
+  }
+
+  .project a.pj_name:hover {
+    text-decoration: underline;
+  }
+
   .project p.pj_tag {
     margin-top: 7px; 
     margin-left: 10px;
@@ -303,6 +311,28 @@
   .c-s-content h2 {
     margin-top: 20px; 
     margin-bottom: 7px;
+  }
+
+  .c-s-content ul:not(#c-s-hlist ul) {
+    margin-left: 20px;
+  }
+
+  .c-s-content code:not(#code-block) {
+    color: inherit;
+    background-color: #e7e6e6;
+  }
+  
+  .dark-mode .c-s-content code:not(#code-block) {
+    background-color: #4f4f4f;
+  }
+  
+  .c-s-content a {
+    color: #43b2f3;
+    text-decoration: none;
+  }
+  
+  .c-s-content a:hover {
+    text-decoration: underline;
   }
   
   #c-s-social {
@@ -795,8 +825,8 @@
     }
   
     .social {
-        width: 20px; 
-        height: 20px;
+        width: 30px; 
+        height: 30px;
         margin-right: 10px; 
     }
   

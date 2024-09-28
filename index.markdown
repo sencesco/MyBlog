@@ -6,7 +6,7 @@ title: All Posts
 {% for post in site.posts %}
 <div class="project">
     <img src="{{ post.image }}" width="100" height="100">
-    <h2>{{ post.title }}</h2>
+    <h2><a class="pj_name" href="{{ site.baseurl }}{{ post.url }}" target="_blank">{{ post.title }}</a></h2>
     <p class="pj_tag">#
         {% for category in post.categories %}
             <a class="pj_tag" href="{{ category | downcase }}.html">{{ category }}</a>
