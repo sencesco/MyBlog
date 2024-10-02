@@ -1,0 +1,52 @@
+---
+layout: home
+title: My Certifications
+---
+
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/certifications.css">
+
+<div class="category-posts">
+    {% assign custom_order = "Machine Learning & AI,Data Structures and Algorithms,Programming,Back-end Development,Database,Operating Systems,Software Development" | split: "," %}
+    {% assign grouped_certifications = site.certifications | group_by: "category" %}
+
+    {% for category in custom_order %}
+        {% assign group = grouped_certifications | where: "name", category | first %}
+        {% if group %}
+            <div class="category-container">
+                <h2>{{ group.name | capitalize }}</h2>
+                <div class="certifications-container">
+                    <ul>
+                        {% assign sorted_certifications = group.items | sort: 'date' | reverse %}
+                        {% for certification in sorted_certifications %}
+                            <li>
+                                <strong>{{ certification.title }}</strong> - {{ certification.date | date: "%B %d, %Y" }},
+                                <span>by: {{ certification.issuer }}</span>
+                                <br>
+                                <button class="toggle-btn" onclick="toggleContent(this)">Summary</button>
+                                <a class="certification-link" href="{{ certification.certification_url }}" target="_blank">
+                                    <span class="link-btn">Certification link</span>
+                                </a>
+                                <div class="certification-content" style="display: none;">
+                                    <p>{{ certification.content }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<script>
+    function toggleContent(button) {
+        var content = button.nextElementSibling.nextElementSibling; // Update to skip over the link
+        if (content.style.display === "none") {
+            content.style.display = "block";
+            button.textContent = "Hide";
+        } else {
+            content.style.display = "none";
+            button.textContent = "Summary";
+        }
+    }
+</script>

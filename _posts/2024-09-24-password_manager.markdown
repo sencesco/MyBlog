@@ -97,7 +97,7 @@ https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%
 </div>
 <br>
 
-- **Password_Manager_main_v1.2.0.py:** The main module for the Password Manager application. This module will build upon the previous modules, including `generator.py` and `user_interactive.py`. This file will used to build the GUI for the application with the `Tkinter`, and use to run the application for debugging. In this project, it contained an object from `Tkinter:
+- **Password_Manager_main_v1.2.0.py:** The main module for the Password Manager application. This module will build upon the previous modules, including `generator.py` and `user_interactive.py`. This file will used to build the GUI for the application with the `Tkinter`, and use to run the application for debugging. In this project, it contained an object from `Tkinter`:
     - `tkinter.Tk()`: The main window for the application.
     - `tkinter.Canvas()`: For the background image.
     - `tkinter.Label()`: For the lable of the input field.

@@ -1,20 +1,23 @@
 .category-posts {
     display: flex;
     flex-direction: column;
-    grid-gap: 30px;
+    grid-gap: 10px;
     margin: 0 auto;
 }
 
 .post-preview {
     padding: 15px;
-    background-color: #f0f0f0;
+    margin: 10px;
+    margin-bottom: 0px;
+    background-color: #ffffff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px #7a97b5;
 }
 
 .dark-mode .post-preview {
     background-color: #242424; 
     color: #c9c9c9;
+    box-shadow: 0 0 10px #313131;
 }
 
 .post-preview a {
@@ -37,4 +40,4 @@
 
 .dark-mode .post-excerpt {
     color: #c9c9c9;
-  }
+}
