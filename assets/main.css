@@ -10,8 +10,9 @@
   /*-------- body-------- */
   html,body {
     height: 100%;
-    background: #F0F4FF;
+    background: #fff;
     position: relative;
+    color: #1E3E62;
   }
   
   /* Dark mode styles */
@@ -36,7 +37,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #dfdcdc; 
+    color: #fff;
     font-size: 0.85rem;
     margin: 10px;
     position: relative;
@@ -107,18 +108,19 @@
     flex: 1; 
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 10px;
     border-radius: 5px;
     width: 300px;
     margin: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px #7a97b5;
   }
-  
+
   /* Dark mode styles For project*/
   .dark-mode .project {
     background-color: #242424; 
     color: #c9c9c9;
+    box-shadow: 0 0 10px #313131;
   }
   
   .project img {
@@ -436,7 +438,7 @@
   }
   
   .a-text {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   
   .a-text .a-head {
@@ -448,10 +450,19 @@
   }
   
   .a-contact {
-    margin-top: 100px;
+    margin-top: 90px;
     margin-right: auto;
   }
   
+  .a-link {
+    text-decoration: none;
+    color: #43b2f3;
+  }
+  
+  .a-link:hover {
+    text-decoration: underline;
+  }
+
   .a-img .about-img {
     width: 200px;
     height: 260px;
@@ -469,7 +480,7 @@
     display: flex;
     overflow-x: hidden;
     flex-direction: column;
-    background: #161a2d;
+    background: #7a97b5;
     padding: 25px 20px;
     transition: all 0.4s ease;
     z-index: 10; /* Ensure the sidebar is on top */
@@ -548,7 +559,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #161a2d;
+    background: #7a97b5;
     padding: 15px 23px;
     color: #fff;
     font-size: 0.9rem;
@@ -632,7 +643,6 @@
         width: 60px;
         border-radius: 50%;
         overflow: hidden;
-        background: #161a2d;
         transition: all 0.4s ease;
         z-index: 10;
         }
@@ -737,7 +747,6 @@
         width: 60px;
         border-radius: 50%;
         overflow: hidden;
-        background: #161a2d;
         transition: all 0.4s ease;
         z-index: 10;
     }
