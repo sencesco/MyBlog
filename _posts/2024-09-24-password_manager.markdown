@@ -28,7 +28,7 @@ github-repo: https://github.com/sencesco/Application/tree/main/Password%20Manage
 
 ## Download
 {{ site.tabc }} You can download the latest version of the application as portable here:
-- [Password_Manager_main_V.1.2.0](https://github.com/sencesco/Application/blob/main/Password%20Manager%20V.1.2.0/pwd-mgr-v1.2.0.rar)<br>
+- [Password_Manager_main_V.1.2.0](https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/pwd-mgr-v1.2.0.rar)<br>
 
 After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.exe.
 
@@ -49,30 +49,29 @@ After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.e
 
 ## Coding Walkthrough
 
-<p class="language">generator.py</p>
 <div class="code-wrapper">
-    <pre><code class="language-python" id="code-block">
-https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/generator.py
-    </code></pre>
-    <button id="copy-button">Copy</button>
+    <button data-url="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/generator.py">generator.py</button>
+    <button data-url="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/user_interactive.py">user_interactive.py</button>
+    <button data-url="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/main.py">main.py</button>
+    <button id="copy-button">Copy</button> 
 </div>
+<pre><code class="language-python" id="code-display"></code></pre>
+
 <br>
 
-- **generator.py:** A custom module with a function to generate passwords containing a random mix of letters, numbers, and symbols. This module is used in `Password_Manager_main_V1.2.0.py` and contains an object named `GenPass`, which has two methods:
+
+<div class="stack-container">
+<div class="code-description" markdown="1">
+
+- **generator.py:** A custom module with a function to generate passwords containing a random mix of letters, numbers, and symbols. This module is used in `main.py` and contains an object named `GenPass`, which has two methods:
     - `_init_()`: Initializes the instance variables. All characters and numbers used to generate passwords are stored in a list within this method.
     - `generate_password()`: Generates a password by randomly mixing letters, numbers, and symbols. The `random` module is used to shuffle the list and join the characters to form a password. The list is then shuffled again to further randomize the password. This method also utilizes `Tkinter` for the user interface and clears the list when generating a new password. Additionally, `pyperclip` is used to copy the password to the clipboard if desired by the user.
 
-<br>
-<p class="language">user_interactive.py</p>
-<div class="code-wrapper">
-    <pre><code class="language-python" id="code-block">
-https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/user_interactive.py
-    </code></pre>
-    <button id="copy-button">Copy</button>
 </div>
-<br>
 
-- **user_interactive.py:** A custom module with a function to interactive with users for can manage their websites-name, usernames, and passwords. This module is used in `Password_Manager_main_V1.2.0.py` and contains an object named `UserInteractive`, which has methods:
+<div class="code-description" markdown="1">
+
+- **user_interactive.py:** A custom module with a function to interactive with users for can manage their websites-name, usernames, and passwords. This module is used in `main.py` and contains an object named `UserInteractive`, which has methods:
     - `_init_()`: Initializes the instance variables that are used in the class.
     - `save_defaults()`: Saves the entered websites-name and usernamevalue by the user to a JSON file.
     - `load_defaults()`: Loads the previously saved websites-name and username values from the JSON file.
@@ -81,17 +80,11 @@ https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%
     - `clear_input()`: Clears the input fields.
     - `clear_user_data()`: Clears the user data from the JSON file.
 
-<br>
-<p class="language">Password_Manager_main_v1.2.0.py</p>
-<div class="code-wrapper">
-    <pre><code class="language-python" id="code-block">
-https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/Password_Manager_main_v1.2.0.py
-    </code></pre>
-    <button id="copy-button">Copy</button>
 </div>
-<br>
 
-- **Password_Manager_main_v1.2.0.py:** The main module for the Password Manager application. This module will build upon the previous modules, including `generator.py` and `user_interactive.py`. This file will used to build the GUI for the application with the `Tkinter`, and use to run the application for debugging. In this project, it contained an object from `Tkinter`:
+<div class="code-description" markdown="1">
+
+- **main.py:** The main module for the Password Manager application. This module will build upon the previous modules, including `generator.py` and `user_interactive.py`. This file will used to build the GUI for the application with the `Tkinter`, and use to run the application for debugging. In this project, it contained an object from `Tkinter`:
     - `tkinter.Tk()`: The main window for the application.
     - `tkinter.Canvas()`: For the background image.
     - `tkinter.Label()`: For the lable of the input field.
@@ -100,7 +93,11 @@ https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%
     - `tkinter.Text()`: For the output field.
     - `object.grid()`: For all the widgets to be placed in the window.
 
-## Closing words
-{{ site.tabc }} That’s a wrap! I hope this showcase gives you a solid understanding of how the Password Manager works and inspires you to implement similar projects. You’re now equipped to manage passwords securely!
+</div>
+</div>
 
-If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!
+
+## Closing words
+{{ site.tabc }} I hope this showcase gives you an understanding of how the Password Manager works and inspires you to implement similar projects. You’re now equipped to manage passwords securely!
+
+{{ site.tabc }} If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!
