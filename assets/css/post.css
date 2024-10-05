@@ -45,8 +45,8 @@ pre[class*=language-] {
     
 #copy-button {
     position: absolute;
-    top: 50px; 
-    right: 10px;
+    top: 55px; 
+    right: 15px;
     background-color: rgb(85, 85, 85);
     color: #c9c9c9;
     border: none;
@@ -58,7 +58,7 @@ pre[class*=language-] {
 }
 
 #copy-button:hover {
-    background-color: rgb(127, 127, 127);
+    background-color: rgb(114, 114, 114);
 }
 
 .code-description {
@@ -66,3 +66,27 @@ pre[class*=language-] {
     padding: 0; /* Reset padding */
     display: none; /* Initially hide all descriptions */
 }
+
+/* Customize scrollbar for section */
+.scrollbar {
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; /* Handle and track color */
+}
+
+.scrollbar:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(134, 134, 134) #333; /* Handle and track color */
+}
+
+.dark-mode .scrollbar {
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; /* Handle and track color */
+}
+
+.dark-mode .scrollbar:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
+}
+
+
+

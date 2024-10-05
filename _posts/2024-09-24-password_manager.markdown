@@ -61,8 +61,7 @@ After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.e
     <button data-url="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/main.py">main.py</button>
     <button id="copy-button">Copy</button> 
 </div>
-<pre><code class="language-python" id="code-display"></code></pre>
-
+<pre class="scrollbar"><code class="language-python" id="code-display"></code></pre>
 <br>
 
 

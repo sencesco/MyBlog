@@ -1,3 +1,39 @@
+/* ____Setting global variables for scrollbar________ */
+/* Root-level variables for light and dark mode */
+:root {
+  --scrollbar-track-color: #e5ecfe;
+  --scrollbar-thumb-color: #cae4ffe1;
+  --scrollbar-thumb-hover-color: #7a97b5;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+  --scrollbar-track-color: #2b2b2b;
+  --scrollbar-thumb-color: #555;
+  --scrollbar-thumb-hover-color: #888;
+}
+
+/* Webkit Scrollbar styling using CSS variables */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color); /* Track color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color); /* Thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color); /* Thumb hover color */
+}
+/*__________________________________________________________ */
+
+
 /*-------- All -------- */
 * {
     margin: 0;
@@ -59,7 +95,8 @@
     opacity: 0.9;
     margin-left: 8px; /* Space between button and tooltip */
   }
-  
+
+
   /* --------- */
   
   .empty-block {
