@@ -319,12 +319,12 @@
     margin-left: 20px;
   }
 
-  .c-s-content code:not(#code-block) {
+  .c-s-content code:not(pre code) {
     color: inherit;
     background-color: #e7e6e6;
   }
   
-  .dark-mode .c-s-content code:not(#code-block) {
+  .dark-mode .c-s-content code:not(pre code) {
     background-color: #4f4f4f;
   }
 

@@ -37,16 +37,3 @@ title: My Certifications
         {% endif %}
     {% endfor %}
 </div>
-
-<script>
-    function toggleContent(button) {
-        var content = button.nextElementSibling.nextElementSibling; // Update to skip over the link
-        if (content.style.display === "none") {
-            content.style.display = "block";
-            button.textContent = "Hide";
-        } else {
-            content.style.display = "none";
-            button.textContent = "Summary";
-        }
-    }
-</script>
