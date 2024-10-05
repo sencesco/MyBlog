@@ -1,35 +1,68 @@
-.language {
-    color: #c9c9c9;;
+.code-wrapper {
+    position: relative; 
+    color: #c9c9c9;
     background-color: rgb(85, 85, 85);
-    padding: 10px;
+    padding: 0; /* Remove padding to make buttons fit the height */
     border-radius: 5px 5px 0 0;
+    font-size: 0.8rem;
+    height: 40px; /* Set a specific height for the wrapper */
+}
+
+.code-wrapper button {
+    height: 100%; /* Make the buttons fill the height of the wrapper */
+    background-color: rgb(85, 85, 85);
+    color: #c9c9c9;
+    border: none;
+    padding: 0px 20px;
+    border-radius: 5px 5px 0 0; /* Keep the top corners rounded */
+    cursor: pointer;
     font-size: 0.8rem;
 }
 
-.code-wrapper {
-    position: relative;
+.code-wrapper button.active {
+    background-color: rgb(65, 65, 65); /* Color for the active button */
+    color: #c9c9c9; 
 }
+
+.code-wrapper button:hover:not(.active) {
+    background-color: rgb(114, 114, 114);  /* Change color when hovering over inactive buttons */
+    color: #c9c9c9; 
+}        
 
 .code-wrapper pre {
     margin: 0;
     padding: 20px;
-    border-radius: 0 0 5px 5px;
     font-size: 0.9rem;
 }
 
+pre[class*=language-] {
+    margin: 0;
+    border-radius: 0 0 5px 5px;
+    font-size: 0.9rem;
+    height: auto;         /* Height will adjust based on width */
+    aspect-ratio: 1 / 1;  /* Maintain a square aspect ratio */
+}
+    
 #copy-button {
     position: absolute;
-    top: 10px;
+    top: 50px; 
     right: 10px;
     background-color: rgb(85, 85, 85);
-    color: #c9c9c9;;
+    color: #c9c9c9;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.8rem;
+    z-index: 10; 
 }
 
 #copy-button:hover {
     background-color: rgb(127, 127, 127);
+}
+
+.code-description {
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    display: none; /* Initially hide all descriptions */
 }
