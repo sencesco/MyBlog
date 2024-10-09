@@ -2,12 +2,12 @@
 layout: post
 title: "Password Manager V.1.2.0"
 excerpt: >
-    This project was built using Python with the Tkinter library for GUI. 
+    This application was built using Python with the Tkinter library for GUI. 
     To generate a password with a random  mix of letters, numbers, and symbols.
 date: 2024-09-28
 categories: "Misc"
 image: https://raw.githubusercontent.com/sencesco/Application/main/Password%20Manager%20V.1.2.0/logo.png
-image-content: /assets/image/project_image/pwd_mgr_pj_1.png
+image-content: /assets/image/post_image/pwd_mgr_1.png
 read_time: 4
 github-repo: https://github.com/sencesco/Application/tree/main/Password%20Manager%20V.1.2.0
 ---
@@ -49,7 +49,7 @@ After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.e
 
 ## Tech Stack
 - **Programming Language:** Python3
-- **UI Framework:** Tkinter
+- **UI Library:** Tkinter
 - **File Handling:** JSON
 - **Version Control:** Git, GitHub
 
@@ -105,5 +105,4 @@ After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.e
 ## Closing words
 {{ site.tabc }} I hope this showcase gives you an understanding of how the Password Manager works and inspires you to implement similar projects. You’re now equipped to manage passwords securely!
 
-{{ site.tabc }} If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!
 {{ site.tabc }} If you found this project helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!

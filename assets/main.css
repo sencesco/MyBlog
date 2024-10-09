@@ -165,6 +165,8 @@ body.dark-mode {
     height: 200px;
     display: block; /* Ensures the image behaves like a block element */
     margin: 0 auto; /* Centers the image horizontally */
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .project h2 {

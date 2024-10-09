@@ -5,12 +5,19 @@ title: All Posts
 
 {% for post in site.posts %}
 <div class="project">
-    <img src="{{ post.image }}" width="100" height="100">
+    {% if post.image contains "https:" %}
+        <img src="{{ post.image }}" width="100" height="100" alt="{{ post.title }} title image">
+    {% else %}
+        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }} title image">
+    {% endif %}
     <h2><a class="pj_name" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
     <p class="pj_tag">#
         {% for category in post.categories %}
-            <a class="pj_tag" href="{{ category | downcase }}.html">{{ category }}</a>
-            {% unless forloop.last %}, {% endunless %}
+            {% if category contains " " %}
+                <a class="pj_tag" href="{{ category | downcase | replace: " ", "-" }}.html">{{ category }}</a>
+            {% else %}
+                <a class="pj_tag" href="{{ category | downcase }}.html">{{ category }}</a>
+            {% endif %}
         {% endfor %}
     </p>
     <p class="pj_desc">{{ post.excerpt }}</p>

@@ -59,7 +59,11 @@
             </div>
             
             <div id="c-s-imgHead">
-                <img src="{{ site.baseurl }}{{ page.image-content }}" alt="{{ page.title }}">
+                {% if post.image contains "https:" %}
+                    <img src="{{ page.image-content }}" alt="{{ page.title }} content image">
+                {% else %}
+                    <img src="{{ site.baseurl }}{{ page.image-content }}" alt="{{ page.title }} content image">
+                {% endif %}
             </div>
             <!-- Example of content table in YY-MM-DD-projectName.markdown
             <div id="c-s-hlist">

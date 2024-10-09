@@ -24,7 +24,7 @@ title: Somchai Kradingthong
 email: somchai.kdt@gmail.com
 description: >
     This blog explores AI, ML, DL, 
-    and miscellaneous things that I do.
+    and all the things that I do.
 url: "https://sencesco.github.io" # the base hostname & protocol for your site
 baseurl: "/MyBlog" # repository name, remove the extra baseurl key
 github_username: sencesco

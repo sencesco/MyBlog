@@ -13,7 +13,7 @@ title: My Certifications
         {% assign group = grouped_certifications | where: "name", category | first %}
         {% if group %}
             <div class="category-container">
-                <h2>{{ group.name | capitalize }}</h2>
+                <h2>{{ group.name }}</h2>
                 <div class="certifications-container">
                     <ul>
                         {% assign sorted_certifications = group.items | sort: 'date' | reverse %}
