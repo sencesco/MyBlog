@@ -200,6 +200,7 @@ body.dark-mode {
   .project a.pj_tag {
     text-decoration: none;
     color: #43b2f3;
+    margin-right: 5px;
   }
   
   .project a.pj_tag:hover {
@@ -367,12 +368,12 @@ body.dark-mode {
     background-color: #4f4f4f;
   }
 
-  .custom-download-link a {
+  .post-content-link a {
     text-decoration: none;
     color: #43b2f3;
   }
 
-  .custom-download-link a:hover {
+  .post-content-link a:hover {
       text-decoration: underline;
   }
 

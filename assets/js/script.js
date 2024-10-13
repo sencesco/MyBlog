@@ -25,7 +25,7 @@ function toggleContent(button) {
 }
 
 
-// /* Fetch and display code from the specified URL and load descriptions */
+ /* Fetch and display code .py from the specified URL and load descriptions */
 document.addEventListener('DOMContentLoaded', function() {
     const codeWrapper = document.querySelector('.code-wrapper');
     const codeBlocks = codeWrapper.querySelectorAll('button[data-url]');
@@ -109,6 +109,79 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Copy button not found');
     }
 });
+
+
+// Fetch and render the notebook (.ipynb)
+document.addEventListener('DOMContentLoaded', function() {
+    const githubLink = document.getElementById('notebook-content').innerHTML;
+
+    async function fetchAndRenderNotebook() {
+        try {
+            const response = await fetch(githubLink);
+            if (!response.ok) throw new Error(`Failed to fetch notebook: ${response.status}`);
+
+            const notebookJson = await response.json();
+            renderNotebookContent(notebookJson);
+        } catch (error) {
+            console.error("Error fetching notebook:", error);
+            document.getElementById('notebook-content').innerHTML = "Failed to load notebook. Please try again later.";
+        }
+    }
+
+    function renderNotebookContent(notebookJson) {
+        let notebookContent = '';
+    
+        notebookJson.cells.forEach((cell, index) => {
+            if (cell.cell_type === 'markdown') {
+                notebookContent += '<div class="markdown-cell">' + marked.parse(cell.source.join('')) + '</div>';
+            } else if (cell.cell_type === 'code') {
+                if (cell.source.join('').trim() === '') {
+                    return; // Skip empty code cells
+                }
+    
+                notebookContent += '<pre><code class="language-python">' +
+                                   cell.source.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+                                   '</code></pre>';
+    
+                if (cell.outputs.length) {
+                    cell.outputs.forEach(output => {
+                        if (output.output_type === 'stream') {
+                            // Filter out off warning
+                            if (output.name === 'stderr' ) {
+                                return; // Skip this warning
+                            }
+                            notebookContent += '<div class="output"><pre>' + output.text.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre></div>';
+                        } else if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
+                            if (output.data['text/html']) {
+                                notebookContent += `<div class="dataframe-wrapper">${output.data['text/html'].join('')}</div>`;
+                            } else if (output.data['text/plain']) {
+                                const plainTextOutput = output.data['text/plain'].join('');
+                                const formattedOutput = plainTextOutput
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/\n/g, '<br>')
+                                    .replace(/ /g, '&nbsp;');
+                                notebookContent += `<div class="output"><pre>${formattedOutput}</pre></div>`;
+                            }
+                            
+                            if (output.data['image/png']) {
+                                notebookContent += `<div class="visualization">
+                                    <img src="data:image/png;base64,${output.data['image/png']}" alt="Matplotlib plot">
+                                </div>`;
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    
+        document.getElementById('notebook-content').innerHTML = notebookContent;
+        Prism.highlightAll();
+    }
+       
+    fetchAndRenderNotebook();
+});
+
 
 
 function shareTwitter() {

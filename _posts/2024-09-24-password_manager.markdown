@@ -5,7 +5,7 @@ excerpt: >
     This application was built using Python with the Tkinter library for GUI. 
     To generate a password with a random  mix of letters, numbers, and symbols.
 date: 2024-09-28
-categories: "Misc"
+categories: ["Misc", "Python"]
 image: https://raw.githubusercontent.com/sencesco/Application/main/Password%20Manager%20V.1.2.0/logo.png
 image-content: /assets/image/post_image/pwd_mgr_1.png
 read_time: 4
@@ -27,7 +27,7 @@ github-repo: https://github.com/sencesco/Application/tree/main/Password%20Manage
 {{ site.tabc }} Password Manager is a secure application designed to help users store, manage, and organize their passwords in one centralized location. The application employs strong encryption techniques to ensure that all user credentials are kept safe and accessible only to the user. With a user-friendly interface, it simplifies the process of creating and managing strong passwords, enhancing overall security for online accounts.
 
 ## Download
-<div class="custom-download-link">
+<div class="post-content-link">
     <ul>
         <li>
         <a href="https://raw.githubusercontent.com/sencesco/Application/refs/heads/main/Password%20Manager%20V.1.2.0/pwd-mgr-v1.2.0.rar">

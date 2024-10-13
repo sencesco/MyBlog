@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Video to image with OpenCV in Python"
+title: "Video to image with OpenCV"
 excerpt: >
     This post will show how to convert video to image with OpenCV.
     Used structural similarity to reduce generation of duplicate images.
 date: 2024-10-07
-categories: ["Computer Vision"]
+categories: ["Computer Vision", "Python"]
 image: /assets/image/post_image/video_to_img_1.png
 image-content: /assets/image/post_image/video_to_img_2.png
 read_time: 3

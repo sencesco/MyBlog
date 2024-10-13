@@ -1,0 +1,160 @@
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+}
+
+/* --------markdown cells--------*/
+.markdown-cell img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --------code cells--------*/
+pre[class*=language-] {
+    font-size: 0.9rem;
+}
+
+
+/* Updated styles for pre-formatted text output */
+.output pre {
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    scrollbar-width: thin; 
+    scrollbar-color: inherit; 
+}
+
+.dark-mode .output pre {
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; /* Handle and track color */
+}
+
+.dark-mode .output pre:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
+}
+
+.dark-mode .output pre {
+    background-color: #1b1b1b;
+    color: #c1c0c0;
+}
+
+/* Ensure consistent font size */
+.output, .output pre, table.dataframe {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 1rem 0;
+}
+
+/* --------dataframe cells--------*/
+/* Add max-width and horizontal scrolling to match the width of the code and markdown cells */
+.dataframe-wrapper {
+    max-width: 100%; /* Set to match the page width */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    margin: 0 auto; /* Center the content */
+    font-size: 0.9rem;
+    scrollbar-width: thin; 
+    scrollbar-color: inherit; 
+}
+
+.dark-mode .dataframe-wrapper {
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; /* Handle and track color */
+}
+
+.dark-mode .dataframe-wrapper:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
+}
+
+table.dataframe {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    display: block;
+    overflow-y: auto; 
+    flex: 1 1 auto;
+}
+
+table.dataframe th {
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+    border: none;
+}
+
+table.dataframe thead {
+    border-bottom: 2px solid #c1c0c0;
+}
+
+table.dataframe td {
+    padding: 8px;
+    border: none;
+}
+
+table.dataframe tr:nth-child(even) {
+    background-color: #f2f2f2;
+    border: none;
+}
+
+table.dataframe tr:hover {
+    background-color: #d1e7f3;
+}
+
+table.dataframe {
+    border: none;
+}
+
+.dark-mode table.dataframe {
+    background-color: #121212; 
+    color: #c9c9c9; 
+}
+
+.dark-mode table.dataframe thead {
+    border-bottom: 2px solid #797979; 
+}
+
+.dark-mode table.dataframe td {
+    padding: 8px;
+    border: none;
+    color: #c9c9c9; 
+}
+
+.dark-mode table.dataframe tr:nth-child(even) {
+    background-color: #2e2e2e; 
+}
+
+.dark-mode table.dataframe tr:hover {
+    background-color: #545454; 
+}
+
+/* --------sklearn output cells--------*/
+.sk-top-container {
+    background-color: #f5f5f5 !important;       
+    /* If the hierarchy issue persists, you can use more specific selectors or !important to enforce the style: 
+     .sk-top-container is the child of #sk-container-id-2 so if #sk-container-id-2 set background-color, "none" will not work
+     then set background-color to transparent to avoid this and make sure with !important to enforce the style*/
+}
+
+.dark-mode .sk-top-container {
+    background-color: #1b1b1b !important;  
+}     
+
+
+/* --------visualization cells--------*/
+.visualization {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.dark-mode .visualization {
+    background-color: #121212;
+    color: #c9c9c9;
+}
