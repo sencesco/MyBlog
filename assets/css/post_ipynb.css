@@ -4,14 +4,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------markdown cells--------*/
-.markdown-cell img {
-    max-width: 100%;
-    height: auto;
+.markdown-cell {
+    max-width: 100%; /* Ensures the markdown-cell doesn't overflow its parent */
+    word-wrap: break-word; /* Breaks long words to prevent horizontal overflow */
+    box-sizing: border-box; 
 }
+
+.markdown-cell img {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; /* Centers the image inside the container */
+}
+
+.markdown-cell a {
+    word-wrap: break-word; 
+    max-width: 100%; 
+    color: #43b2f3;
+    text-decoration: none; /* Optional: Customize the appearance of links */
+}
+
+.markdown-cell a:hover {
+    text-decoration: underline;
+}
+
+.markdown-cell p {
+    max-width: 100%; 
+    overflow-wrap: break-word; 
+}
+
 
 /* --------code cells--------*/
 pre[class*=language-] {
     font-size: 0.9rem;
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; 
+}
+
+pre[class*=language-]:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(114, 114, 114) #333; 
 }
 
 
@@ -30,12 +62,12 @@ pre[class*=language-] {
 
 .dark-mode .output pre {
     scrollbar-width: thin; 
-    scrollbar-color: #555 #333; /* Handle and track color */
+    scrollbar-color: #555 #333; 
 }
 
 .dark-mode .output pre:hover {
     scrollbar-width: thin; 
-    scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
+    scrollbar-color: rgb(114, 114, 114) #333; 
 }
 
 .dark-mode .output pre {
@@ -48,6 +80,7 @@ pre[class*=language-] {
     font-size: 0.9rem;
     line-height: 1.4;
     margin: 1rem 0;
+    max-height: 300px;
 }
 
 /* --------dataframe cells--------*/
@@ -57,18 +90,11 @@ pre[class*=language-] {
     overflow-x: auto; /* Enable horizontal scrolling if needed */
     margin: 0 auto; /* Center the content */
     font-size: 0.9rem;
-    scrollbar-width: thin; 
-    scrollbar-color: inherit; 
-}
-
-.dark-mode .dataframe-wrapper {
-    scrollbar-width: thin; 
-    scrollbar-color: #555 #333; /* Handle and track color */
 }
 
 .dark-mode .dataframe-wrapper:hover {
     scrollbar-width: thin; 
-    scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
+    scrollbar-color: rgb(114, 114, 114) #333; 
 }
 
 table.dataframe {
@@ -79,6 +105,18 @@ table.dataframe {
     display: block;
     overflow-y: auto; 
     flex: 1 1 auto;
+    scrollbar-width: thin; 
+    scrollbar-color: inherit; 
+}
+
+.dark-mode table.dataframe {
+    scrollbar-width: thin; 
+    scrollbar-color: #555 #333; 
+}
+
+.dark-mode table.dataframe:hover {
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(114, 114, 114) #333; 
 }
 
 table.dataframe th {
@@ -146,12 +184,21 @@ table.dataframe {
 }     
 
 
-/* --------visualization cells--------*/
 .visualization {
     margin: 20px 0;
     padding: 10px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 5px;    
+    /* Make sure the container itself is responsive */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.visualization img {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
 }
 
 .dark-mode .visualization {

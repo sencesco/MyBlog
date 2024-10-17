@@ -58,7 +58,7 @@ body.dark-mode {
   }
   
   .sidebar.dark-mode {
-    background-color: #1e1e1e;
+  background-color: #1e1e1e;
     color: #c9c9c9;
   }
   
@@ -386,6 +386,8 @@ body.dark-mode {
     align-items: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   
   .share-button-x {
@@ -584,13 +586,34 @@ body.dark-mode {
   }
   
   .has-sublist .sublist {
-    display: none;
+    display: none; /* Keep sublist hidden by default */
     list-style: none;
+    max-height: 155px; /* Set a maximum height for showing some items */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
     padding-left: 20px;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+  .has-sublist ul:hover {
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+  }
+
+  /* For WebKit browsers (like Chrome and Safari) */
+  .has-sublist .sublist::-webkit-scrollbar {
+      display: none; /* Hide scrollbar */
+  }
+
+  /* Additional styling to ensure no visible scrollbar appears */
+  .has-sublist .sublist {
+      -ms-overflow-style: none;  /* Internet Explorer and Edge */
+      overflow: -moz-hidden-unscrollable; /* Firefox */
   }
   
+  
   .sublist li a {
-    padding: 10px 10px;
+    padding: 7px 7px;
     font-size: 0.9rem;
   }
   

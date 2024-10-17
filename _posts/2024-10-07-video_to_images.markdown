@@ -8,7 +8,7 @@ date: 2024-10-07
 categories: ["Computer Vision", "Python"]
 image: /assets/image/post_image/video_to_img_1.png
 image-content: /assets/image/post_image/video_to_img_2.png
-read_time: 3
+read_time: 4
 github-repo: https://github.com/sencesco/Computer-Vision/blob/main/video_to_img%20V1.1.py
 ---
 

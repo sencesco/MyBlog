@@ -1,15 +1,20 @@
 /* Toggle between showing and hiding the navigation menu links 
    when the user clicks on the hamburger menu / bar icon */
-function myFunction() {
-    var sublist = document.getElementsByClassName("sublist");
-    for (var idx = 0; idx < sublist.length; idx++) {
-        if (window.getComputedStyle(sublist[idx]).display === "none") {
-            sublist[idx].style.display = "block";
-        } else {
-            sublist[idx].style.display = "none";
-        }
-    }
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleElements = document.querySelectorAll('.has-sublist');
+
+    toggleElements.forEach((toggle) => {
+        toggle.addEventListener('click', function() {
+            const sublist = this.querySelector('.sublist');
+            // Toggle display of the sublist
+            if (sublist.style.display === 'block') {
+                sublist.style.display = 'none';
+            } else {
+                sublist.style.display = 'block';
+            }
+        });
+    });
+});
 
 
 /* Toggle between showing and hiding the content */
@@ -25,7 +30,7 @@ function toggleContent(button) {
 }
 
 
- /* Fetch and display code .py from the specified URL and load descriptions */
+/* Fetch and display code .py from the specified URL and load descriptions */
 document.addEventListener('DOMContentLoaded', function() {
     const codeWrapper = document.querySelector('.code-wrapper');
     const codeBlocks = codeWrapper.querySelectorAll('button[data-url]');
@@ -111,11 +116,56 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Fetch and render the notebook (.ipynb)
-document.addEventListener('DOMContentLoaded', function() {
+// Fetch and render the notebook from the specified URL
+document.addEventListener('DOMContentLoaded', function () {
     const githubLink = document.getElementById('notebook-content').innerHTML;
 
+    // Initialize cellsToSkip with values extracted from the <script> tag
+    let cellsToSkip = {
+        markdown: [],  // Will be filled from the <script>
+        code: []       // Will be filled from the <script>
+    };
+
+    let addTag = {
+        markdown: [],  // Will be filled from the <script>
+        code: []       // Will be filled from the <script>
+    }
+
+    // Function to extract identifiers from the <script> tag
+    function extractCellsToSkip() {
+        const filtersElement = document.getElementById('notebook-filters-ignore');
+        if (filtersElement) {
+            const filtersData = JSON.parse(filtersElement.textContent);
+
+            // Populate cellsToSkip from the parsed JSON
+            if (filtersData.markdown && Array.isArray(filtersData.markdown.id)) {
+                cellsToSkip.markdown = filtersData.markdown.id;  // Directly set array
+            }
+            if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
+                cellsToSkip.code = filtersData.code.timestamp;  // Directly set array
+            }
+        }
+    }
+
+    function extractAddTag() {
+        const filtersElement = document.getElementById('notebook-filters-add_tag');
+        if (filtersElement) {
+            const filtersData = JSON.parse(filtersElement.textContent);
+
+            // Populate addTag from the parsed JSON
+            if (filtersData.markdown && Array.isArray(filtersData.markdown.id_pair)) {
+                addTag.markdown = filtersData.markdown.id_pair;  // Store the id_pair array
+            }
+            if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
+                addTag.code = filtersData.code.timestamp;  // Store the timestamps for code cells
+            }
+        }
+    }
+
     async function fetchAndRenderNotebook() {
+        extractCellsToSkip(); // Extract cell identifiers before fetching the notebook
+        extractAddTag(); // Extract tags to add
+
         try {
             const response = await fetch(githubLink);
             if (!response.ok) throw new Error(`Failed to fetch notebook: ${response.status}`);
@@ -130,26 +180,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderNotebookContent(notebookJson) {
         let notebookContent = '';
-    
-        notebookJson.cells.forEach((cell, index) => {
-            if (cell.cell_type === 'markdown') {
-                notebookContent += '<div class="markdown-cell">' + marked.parse(cell.source.join('')) + '</div>';
-            } else if (cell.cell_type === 'code') {
-                if (cell.source.join('').trim() === '') {
-                    return; // Skip empty code cells
+
+        notebookJson.cells.forEach((cell) => {
+            // Skip markdown cells based on their IDs
+            if (cell.cell_type === 'markdown' && cellsToSkip.markdown.includes(cell.metadata.id)) {
+                return;  // Skip this markdown cell
+            }
+
+            // Check for code cell and its timestamp
+            if (cell.cell_type === 'code') {
+                // Use cell.metadata.executionInfo.timestamp to check against cellsToSkip
+                if (cell.metadata.executionInfo && cellsToSkip.code.includes(cell.metadata.executionInfo.timestamp)) {
+                    return;  // Skip this code cell
                 }
-    
-                notebookContent += '<pre><code class="language-python">' +
-                                   cell.source.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
-                                   '</code></pre>';
-    
+            }
+
+            // Render markdown cells
+            if (cell.cell_type === 'markdown') {
+                let markdownOutput = '';
+
+                // Check if the current cell's ID matches any in addTag
+                const matchedTag = addTag.markdown.find(tag => tag.id === cell.metadata.id);
+                if (matchedTag) {
+                    markdownOutput += matchedTag.tag; // Prepend the corresponding tag
+                }
+
+                markdownOutput += marked.parse(cell.source.join('')); // Parse the markdown content
+                notebookContent += '<div class="markdown-cell">' + markdownOutput + '</div>';
+            }
+
+            // Render code cells
+            if (cell.cell_type === 'code') {
+                let codeOutput = '';
+
+                // Check if the current cell's timestamp matches any in addTag
+                if (cell.metadata.executionInfo && cell.metadata.executionInfo.timestamp) {
+                    const matchedTag = addTag.code.find(tag => tag.timestamp === cell.metadata.executionInfo.timestamp);
+                    if (matchedTag) {
+                        codeOutput += matchedTag.tag; // Prepend the corresponding tag
+                    }
+                }
+
+                if (cell.source.join('').trim() === '') return;  // Skip empty code cells
+
+                codeOutput += '<pre><code class="language-python">' +
+                    cell.source.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+                    '</code></pre>';
+
+                notebookContent += codeOutput;
+
+                // Render code outputs if they exist
                 if (cell.outputs.length) {
                     cell.outputs.forEach(output => {
                         if (output.output_type === 'stream') {
-                            // Filter out off warning
-                            if (output.name === 'stderr' ) {
-                                return; // Skip this warning
-                            }
+                            if (output.name === 'stderr') return;  // Skip stderr
                             notebookContent += '<div class="output"><pre>' + output.text.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre></div>';
                         } else if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
                             if (output.data['text/html']) {
@@ -163,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     .replace(/ /g, '&nbsp;');
                                 notebookContent += `<div class="output"><pre>${formattedOutput}</pre></div>`;
                             }
-                            
+
                             if (output.data['image/png']) {
                                 notebookContent += `<div class="visualization">
                                     <img src="data:image/png;base64,${output.data['image/png']}" alt="Matplotlib plot">
@@ -174,14 +258,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    
+
         document.getElementById('notebook-content').innerHTML = notebookContent;
         Prism.highlightAll();
     }
-       
+
     fetchAndRenderNotebook();
 });
-
 
 
 function shareTwitter() {
