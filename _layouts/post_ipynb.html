@@ -49,17 +49,15 @@
                 </p>
                 <span class="c-s-date-stext">
                     {% if page.github-repo %}
-                        <span class="material-symbols-outlined">open_in_new</span>
-                        <a class="c-s-date-stext-link" 
-                           href="{{ page.github-repo }}" 
-                           target="_blank">Github</a>
+                        <a class="c-s-date-stext-link" href="{{ page.github-repo }}" target="_blank">
+                            <span class="material-symbols-outlined">open_in_new</span>
+                            Github</a>
                     {% endif %}
                     
                     {% if page.colab-link %}
-                        <span class="material-symbols-outlined">open_in_new</span>
-                        <a class="c-s-date-stext-link"  
-                           href="{{ page.colab-link }}" 
-                           target="_blank">Colab</a>
+                        <a class="c-s-date-stext-link"  href="{{ page.colab-link }}" target="_blank">
+                            <span class="material-symbols-outlined">open_in_new</span>
+                            Colab</a>
                     {% endif %}
                 </span>
             </div>

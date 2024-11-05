@@ -2,8 +2,7 @@
 layout: post
 title: "Password Manager V.1.2.0"
 excerpt: >
-    This application was built using Python with the Tkinter library for GUI. 
-    To generate a password with a random  mix of letters, numbers, and symbols.
+    Generate a password with a random  mix of letters, numbers, and symbols.
 date: 2024-09-28
 categories: ["Misc", "Python"]
 image: https://raw.githubusercontent.com/sencesco/Application/main/Password%20Manager%20V.1.2.0/logo.png

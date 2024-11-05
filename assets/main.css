@@ -140,46 +140,74 @@ body.dark-mode {
     margin: 0 auto;
     padding-left: 20px;
   }
-  
+
   .project {
-    flex: 1; 
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 0 0 calc(50% - 20px); 
     background-color: #ffffff;
     padding: 10px;
     border-radius: 5px;
-    width: 300px;
-    margin: 10px; 
+    margin: 10px;
     box-shadow: 0 0 10px #7a97b5;
+    aspect-ratio: 2 / 1;
   }
 
-  /* Dark mode styles For project*/
+  .project .pj_title {
+    width: 100%;
+    order: 1;
+  }
+
+  .project img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  .project p.pj_desc {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 1rem;
+    order: 2;
+    flex: 1;
+  }
+
+  .project p.pj_date_and_read {
+    width: 100%;
+    margin-top: auto;
+    margin-left: 10px;
+    background: none;
+    border: none;
+    padding: 5px;
+    font-size: 0.8rem;
+    color: #838181fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: 3;
+  }
+
   .dark-mode .project {
-    background-color: #242424; 
+    background-color: #242424;
     color: #c9c9c9;
     box-shadow: 0 0 10px #313131;
   }
-  
-  .project img {
-    width: 200px;
-    height: 200px;
-    display: block; /* Ensures the image behaves like a block element */
-    margin: 0 auto; /* Centers the image horizontally */
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
+
   .project h2 {
-    margin-top: 0; /* Remove top margin from heading */
+    margin-top: 0;
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+
   .dark-mode .project h2 {
-    background-color: #242424; 
-    color: #dfdcdc; 
+    background-color: #242424;
+    color: #dfdcdc;
   }
-  
+
   .project a.pj_name {
     text-decoration: none;
     color: #43b2f3;
@@ -190,46 +218,23 @@ body.dark-mode {
   }
 
   .project p.pj_tag {
-    margin-top: 7px; 
+    margin-top: 7px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 0.9rem;
     color: #838181fa;
   }
-  
+
   .project a.pj_tag {
     text-decoration: none;
     color: #43b2f3;
     margin-right: 5px;
   }
-  
+
   .project a.pj_tag:hover {
     text-decoration: underline;
   }
-  
-  .project p.pj_desc {
-    margin-top: 30px; 
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 30px;
-    font-size: 1rem;
-  }
-  
-  .project p.pj_date_and_read {
-    margin-top: 30px; 
-    margin-left: 10px;
-    background: none;
-    border: none;
-    padding: 5px;
-    font-size: 0.8rem;
-    text-align: left;
-    color: #838181fa;
-    display: flex; /* Use flexbox */
-    justify-content: space-between; /* Spread the content */
-    align-items: center; /* Vertically align items on the same line */
-    margin-top: auto; /* Keep this section to the bottom */
-  }
-  
+
   .project span.read-more {
     background: none;
     border: none;
@@ -238,7 +243,7 @@ body.dark-mode {
     color: #43b2f3;
     font-size: 0.9rem;
   }
-  
+
   .project span.read-more:hover {
     background-color: #1e87c4;
     border-radius: 5px;
@@ -246,12 +251,11 @@ body.dark-mode {
     font-size: 0.9rem;
     color: #fff;
   }
-  
+
   .project a.pj_page {
     text-decoration: none;
     color: inherit;
   }
-  
   
   /*-------- Project page-------- */
   #content-page {
@@ -858,9 +862,16 @@ body.dark-mode {
     }
   
     #project-container {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .project {
+      width: 100%;
+      margin: 10px auto;
     }
   
     #content-page {
