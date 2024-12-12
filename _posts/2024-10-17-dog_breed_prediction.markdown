@@ -55,7 +55,7 @@ colab-link: https://colab.research.google.com/github/sencesco/Artificial-Intelli
                     "tag": "<h2 id='loading-library'>Import library and Data Exploration</h2><p>{{ site.tabc }}First we need to import required libraries for using pre-processing and building a model. And explore a dataset for understanding data information before building a model.</p>" 
                 },
                 {   "timestamp": 1704858657014, 
-                    "tag": "<h2 id='image-processing'>Image pre-processing</h2>{{ site.tabc }}<p>{{ site.tabc }}Then this dataset is images. So we need to do pre-processing to make it ready for building a model. That we need to convert images into a numpy array for computer vision can read image information and process to a model.</p>" 
+                    "tag": "<h2 id='image-processing'>Image pre-processing</h2><p>{{ site.tabc }}Then this dataset is images. So we need to do pre-processing to make it ready for building a model. That we need to convert images into a numpy array for computer vision can read image information and process to a model.</p>" 
                 },
                 {   "timestamp": 1704858771939,
                     "tag": "<h2 id='training-model'>Training a Model</h2><p>{{ site.tabc }}Choosing an optimal batch size and epochs will help a model achieve better accuracy.</p>"

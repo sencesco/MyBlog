@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (filtersData.markdown && Array.isArray(filtersData.markdown.id)) {
                 cellsToSkip.markdown = filtersData.markdown.id;  // Directly set array
             }
+            
             if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
                 cellsToSkip.code = filtersData.code.timestamp;  // Directly set array
             }
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (filtersData.markdown && Array.isArray(filtersData.markdown.id_pair)) {
                 addTag.markdown = filtersData.markdown.id_pair;  // Store the id_pair array
             }
+
             if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
                 addTag.code = filtersData.code.timestamp;  // Store the timestamps for code cells
             }
@@ -180,39 +182,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderNotebookContent(notebookJson) {
         let notebookContent = '';
-
+    
         notebookJson.cells.forEach((cell) => {
             // Skip markdown cells based on their IDs
             if (cell.cell_type === 'markdown' && cellsToSkip.markdown.includes(cell.metadata.id)) {
-                return;  // Skip this markdown cell
+                return; // Skip this markdown cell
             }
-
+    
             // Check for code cell and its timestamp
             if (cell.cell_type === 'code') {
                 // Use cell.metadata.executionInfo.timestamp to check against cellsToSkip
                 if (cell.metadata.executionInfo && cellsToSkip.code.includes(cell.metadata.executionInfo.timestamp)) {
-                    return;  // Skip this code cell
+                    return; // Skip this code cell
                 }
             }
-
+    
             // Render markdown cells
             if (cell.cell_type === 'markdown') {
                 let markdownOutput = '';
-
+    
                 // Check if the current cell's ID matches any in addTag
                 const matchedTag = addTag.markdown.find(tag => tag.id === cell.metadata.id);
                 if (matchedTag) {
                     markdownOutput += matchedTag.tag; // Prepend the corresponding tag
                 }
-
+    
                 markdownOutput += marked.parse(cell.source.join('')); // Parse the markdown content
                 notebookContent += '<div class="markdown-cell">' + markdownOutput + '</div>';
             }
-
+    
             // Render code cells
             if (cell.cell_type === 'code') {
                 let codeOutput = '';
-
+    
                 // Check if the current cell's timestamp matches any in addTag
                 if (cell.metadata.executionInfo && cell.metadata.executionInfo.timestamp) {
                     const matchedTag = addTag.code.find(tag => tag.timestamp === cell.metadata.executionInfo.timestamp);
@@ -220,24 +222,31 @@ document.addEventListener('DOMContentLoaded', function () {
                         codeOutput += matchedTag.tag; // Prepend the corresponding tag
                     }
                 }
-
-                if (cell.source.join('').trim() === '') return;  // Skip empty code cells
-
+    
+                if (cell.source.join('').trim() === '') return; // Skip empty code cells
+    
                 codeOutput += '<pre><code class="language-python">' +
                     cell.source.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
                     '</code></pre>';
-
+    
                 notebookContent += codeOutput;
-
+    
                 // Render code outputs if they exist
                 if (cell.outputs.length) {
                     cell.outputs.forEach(output => {
+                        // Debugging for output data
+                        console.log('Output data:', output.data);
+    
                         if (output.output_type === 'stream') {
-                            if (output.name === 'stderr') return;  // Skip stderr
+                            if (output.name === 'stderr') return; // Skip stderr
                             notebookContent += '<div class="output"><pre>' + output.text.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre></div>';
                         } else if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
                             if (output.data['text/html']) {
-                                notebookContent += `<div class="dataframe-wrapper">${output.data['text/html'].join('')}</div>`;
+                                // Improved logic for handling HTML content
+                                const htmlContent = Array.isArray(output.data['text/html'])
+                                    ? output.data['text/html'].join('')
+                                    : output.data['text/html'];
+                                notebookContent += `<div class="dataframe-wrapper">${htmlContent}</div>`;
                             } else if (output.data['text/plain']) {
                                 const plainTextOutput = output.data['text/plain'].join('');
                                 const formattedOutput = plainTextOutput
@@ -247,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     .replace(/ /g, '&nbsp;');
                                 notebookContent += `<div class="output"><pre>${formattedOutput}</pre></div>`;
                             }
-
+    
                             if (output.data['image/png']) {
                                 notebookContent += `<div class="visualization">
                                     <img src="data:image/png;base64,${output.data['image/png']}" alt="Matplotlib plot">
@@ -258,12 +267,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-
+    
         document.getElementById('notebook-content').innerHTML = notebookContent;
         Prism.highlightAll();
     }
-
-    fetchAndRenderNotebook();
+    
+    fetchAndRenderNotebook();    
 });
 
 
