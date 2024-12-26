@@ -1,0 +1,40 @@
+div #search-results-container {
+  width: 100%;
+}
+
+
+#search-input {
+  width: 100%;
+  background-color: inherit;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: inherit;
+}
+
+#search-results li {
+  list-style-type: disc; /* Use 'disc' for bullets */
+  margin-bottom: 15px;
+}
+
+#search-results li a {
+  text-decoration: none;
+  color: #43b2f3;
+}
+
+@media (max-width: 768px) {
+  div #search-results-container {
+    width: 100%;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  div #search-results-container {
+    width: 100%;
+    padding-right: 2rem;
+  }
+}

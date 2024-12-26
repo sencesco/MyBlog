@@ -27,6 +27,7 @@ description: >
     and all the things that I do.
 url: "https://sencesco.github.io" # the base hostname & protocol for your site
 baseurl: "/MyBlog" # repository name, remove the extra baseurl key
+permalink: /:year:month:day/:title.html # post url generator
 github_username: sencesco
 
 # Build settings
@@ -35,13 +36,15 @@ plugins:
     - jekyll-feed
 
 # Content settings
-tabc: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"  # tab character = 4 spaces
+tabc: "&emsp;"  # tab character = 4 spaces
 
 # certificate settings
 collections:
     certifications:
         output: true
 
+# include:
+#   - search.json
 
 # Exclude from processing.
 # The following items will not be processed, by default.

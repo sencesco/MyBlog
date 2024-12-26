@@ -554,6 +554,27 @@ body.dark-mode {
     margin-left: 23px;
   }
   
+  /* Search box styles */
+  #search {
+    margin-left: 10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    color: #161a2d;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  /* Show the search box on hover */
+  .sidebar:hover #search {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .sidebar:hover .sidebar-links .menu-separator {
     transition-delay: 0s;
     transform: scaleX(0);
@@ -596,29 +617,31 @@ body.dark-mode {
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden;
     padding-left: 20px;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    scrollbar-width: 0; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  }
+
+  .has-sublist .sublist::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+
+  .has-sublist .sublist:hover {
+      scrollbar-width: 0.75rem; /* Show scrollbar width for Firefox on hover */
+      -ms-overflow-style: scrollbar; /* Show scrollbar for Internet Explorer and Edge on hover */
+  }
+
+  .has-sublist .sublist:hover::-webkit-scrollbar {
+      display: block; /* Show scrollbar for Chrome, Safari and Opera on hover */
   }
 
   .has-sublist ul:hover {
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #fff;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
   }
 
-  /* For WebKit browsers (like Chrome and Safari) */
-  .has-sublist .sublist::-webkit-scrollbar {
-      display: none; /* Hide scrollbar */
-  }
-
-  /* Additional styling to ensure no visible scrollbar appears */
-  .has-sublist .sublist {
-      -ms-overflow-style: none;  /* Internet Explorer and Edge */
-      overflow: -moz-hidden-unscrollable; /* Firefox */
-  }
-  
-  
   .sublist li a {
-    padding: 7px 7px;
-    font-size: 0.9rem;
+      padding: 7px 7px;
+      font-size: 0.9rem;
   }
   
   /*-------- footer -------- */
@@ -672,6 +695,33 @@ body.dark-mode {
     transform: scale(1.2);
   }
   
+
+  /* --------- search.html --------- */
+  #search-results-container {
+    margin: 20px;
+  }
+
+  #search-results {
+    list-style: none;
+    padding: 0;
+  }
+
+  #search-results li {
+    margin-bottom: 10px;
+  }
+
+  #search-results li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+  }
+
+  #search-results li a:hover {
+    text-decoration: underline;
+    color: #007BFF;
+  }
+
+
   /* --------- Responsiveness --------- */
   
   /* Responsiveness for medium screens */
@@ -696,6 +746,11 @@ body.dark-mode {
   
     .grid-item, .grid-item-2 {
         padding: 20px; 
+    }
+
+    #search {
+      width: 90%; 
+      font-size: 0.85rem; /* Adjust font size */
     }
   }
   
@@ -757,6 +812,18 @@ body.dark-mode {
             display: block;
     }
   
+
+    #search {
+      width: 100%; /* Take full width for small screens */
+      margin: 10px auto; /* Center align */
+      padding: 8px 15px; /* Adjust padding */
+      font-size: 0.8rem;
+    }
+
+    .sidebar:hover #search {
+      margin-top: 15px; /* Align better with sidebar */
+    }
+
     #project-container {
         width: 80%;
     }
@@ -861,6 +928,18 @@ body.dark-mode {
         display: block;
     }
   
+    #search {
+      width: 100%; /* Full width on very small screens */
+      height: 40px;
+      margin: 10px auto;
+      padding: 5px 10px; /* Compact padding */
+      font-size: 0.85rem; /* Smaller font size */
+    }
+
+    .sidebar:hover #search {
+        margin-top: 10px;
+    }
+
     #project-container {
         display: flex;
         flex-direction: column;

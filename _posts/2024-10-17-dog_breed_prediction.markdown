@@ -4,7 +4,7 @@ title: "Dog Breed Prediction"
 excerpt: >
     Predicting dog breed from images.
 date: 2024-10-17
-categories: ["ML","DL","Computer Vision", "Python","DA", "Artificial Intelligence"]
+categories: ["ML","DL","Computer Vision", "Python"]
 image: /assets/image/post_image/dog_breed_1.png
 read_time: 6
 github-repo: https://github.com/sencesco/Artificial-Intelligence/blob/main/Dog%20Breed%20Prediction%20(50%20class%20prediction)/Kaggle%20notebook%20Code/dog-breed-prediction.ipynb
@@ -74,4 +74,4 @@ colab-link: https://colab.research.google.com/github/sencesco/Artificial-Intelli
 
 {{ site.tabc }} So in the real world, considering a matching dataset with a suitable architecture will make it perform better. And if we can use a lighter model, it will be better, but we need to consider the characteristics of architecture first for model performance.
 
-{{ site.tabc }} I hope this challenge will be useful for image classification challenges with deep learning using pretrained model techniques.
+{{ site.tabc }} If you found this challenge helpful, feel free to share it. Don’t forget to check out my other projects for more coding inspiration. Enjoy reading!

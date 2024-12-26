@@ -3,6 +3,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1.5rem;
 }
 
+
 /* --------markdown cells--------*/
 .markdown-cell {
     max-width: 100%; /* Ensures the markdown-cell doesn't overflow its parent */
@@ -39,12 +40,24 @@ pre[class*=language-] {
     font-size: 0.9rem;
     scrollbar-width: thin; 
     scrollbar-color: #555 #333; 
+    border-radius: 5px;
 }
 
 pre[class*=language-]:hover {
     scrollbar-width: thin; 
     scrollbar-color: rgb(114, 114, 114) #333; 
 }
+
+pre.inactive-code {
+    color: inherit;
+    background-color: #e7e6e6;
+    margin: 1rem 0;
+  }
+  
+.dark-mode pre.inactive-code {
+background-color: #4f4f4f;
+}
+
 
 
 /* Updated styles for pre-formatted text output */

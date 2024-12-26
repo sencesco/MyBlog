@@ -115,20 +115,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
 // Fetch and render the notebook from the specified URL
 document.addEventListener('DOMContentLoaded', function () {
-    const githubLink = document.getElementById('notebook-content').innerHTML;
+    let githubLink = document.getElementById('notebook-content').innerHTML.trim();
 
     // Initialize cellsToSkip with values extracted from the <script> tag
     let cellsToSkip = {
-        markdown: [],  // Will be filled from the <script>
-        code: []       // Will be filled from the <script>
+        markdown: [],
+        code: []
     };
 
     let addTag = {
-        markdown: [],  // Will be filled from the <script>
-        code: []       // Will be filled from the <script>
+        markdown: [],
+        code: []
+    };
+
+    // Function to strip ANSI escape codes from text
+    function stripAnsiCodes(text) {
+        // Remove ANSI escape sequences
+        return text.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
+    }
+
+    // Function to convert GitHub repository URL to raw content URL if needed
+    function convertToRawUrl(url) {
+        if (url.includes('github.com') && !url.includes('raw.githubusercontent.com')) {
+            return url
+                .replace('github.com', 'raw.githubusercontent.com')
+                .replace('/blob/', '/');
+        }
+        return url;
     }
 
     // Function to extract identifiers from the <script> tag
@@ -136,14 +151,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const filtersElement = document.getElementById('notebook-filters-ignore');
         if (filtersElement) {
             const filtersData = JSON.parse(filtersElement.textContent);
-
-            // Populate cellsToSkip from the parsed JSON
             if (filtersData.markdown && Array.isArray(filtersData.markdown.id)) {
-                cellsToSkip.markdown = filtersData.markdown.id;  // Directly set array
+                cellsToSkip.markdown = filtersData.markdown.id;
             }
-            
             if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
-                cellsToSkip.code = filtersData.code.timestamp;  // Directly set array
+                cellsToSkip.code = filtersData.code.timestamp;
             }
         }
     }
@@ -152,24 +164,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const filtersElement = document.getElementById('notebook-filters-add_tag');
         if (filtersElement) {
             const filtersData = JSON.parse(filtersElement.textContent);
-
-            // Populate addTag from the parsed JSON
             if (filtersData.markdown && Array.isArray(filtersData.markdown.id_pair)) {
-                addTag.markdown = filtersData.markdown.id_pair;  // Store the id_pair array
+                addTag.markdown = filtersData.markdown.id_pair;
             }
-
             if (filtersData.code && Array.isArray(filtersData.code.timestamp)) {
-                addTag.code = filtersData.code.timestamp;  // Store the timestamps for code cells
+                addTag.code = filtersData.code.timestamp;
             }
         }
     }
 
     async function fetchAndRenderNotebook() {
-        extractCellsToSkip(); // Extract cell identifiers before fetching the notebook
-        extractAddTag(); // Extract tags to add
+        extractCellsToSkip();
+        extractAddTag();
 
         try {
-            const response = await fetch(githubLink);
+            // Convert URL to raw format if needed
+            const rawUrl = convertToRawUrl(githubLink);
+            const response = await fetch(rawUrl);
             if (!response.ok) throw new Error(`Failed to fetch notebook: ${response.status}`);
 
             const notebookJson = await response.json();
@@ -182,97 +193,127 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderNotebookContent(notebookJson) {
         let notebookContent = '';
-    
-        notebookJson.cells.forEach((cell) => {
-            // Skip markdown cells based on their IDs
-            if (cell.cell_type === 'markdown' && cellsToSkip.markdown.includes(cell.metadata.id)) {
-                return; // Skip this markdown cell
-            }
-    
-            // Check for code cell and its timestamp
-            if (cell.cell_type === 'code') {
-                // Use cell.metadata.executionInfo.timestamp to check against cellsToSkip
-                if (cell.metadata.executionInfo && cellsToSkip.code.includes(cell.metadata.executionInfo.timestamp)) {
-                    return; // Skip this code cell
-                }
-            }
-    
-            // Render markdown cells
+        
+        // Handle different notebook formats
+        const cells = notebookJson.cells || [];
+        
+        cells.forEach((cell) => {
+            // Skip cells based on metadata
+            if (shouldSkipCell(cell)) return;
+
             if (cell.cell_type === 'markdown') {
-                let markdownOutput = '';
-    
-                // Check if the current cell's ID matches any in addTag
-                const matchedTag = addTag.markdown.find(tag => tag.id === cell.metadata.id);
-                if (matchedTag) {
-                    markdownOutput += matchedTag.tag; // Prepend the corresponding tag
-                }
-    
-                markdownOutput += marked.parse(cell.source.join('')); // Parse the markdown content
-                notebookContent += '<div class="markdown-cell">' + markdownOutput + '</div>';
-            }
-    
-            // Render code cells
-            if (cell.cell_type === 'code') {
-                let codeOutput = '';
-    
-                // Check if the current cell's timestamp matches any in addTag
-                if (cell.metadata.executionInfo && cell.metadata.executionInfo.timestamp) {
-                    const matchedTag = addTag.code.find(tag => tag.timestamp === cell.metadata.executionInfo.timestamp);
-                    if (matchedTag) {
-                        codeOutput += matchedTag.tag; // Prepend the corresponding tag
-                    }
-                }
-    
-                if (cell.source.join('').trim() === '') return; // Skip empty code cells
-    
-                codeOutput += '<pre><code class="language-python">' +
-                    cell.source.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
-                    '</code></pre>';
-    
-                notebookContent += codeOutput;
-    
-                // Render code outputs if they exist
-                if (cell.outputs.length) {
-                    cell.outputs.forEach(output => {
-                        // Debugging for output data
-                        console.log('Output data:', output.data);
-    
-                        if (output.output_type === 'stream') {
-                            if (output.name === 'stderr') return; // Skip stderr
-                            notebookContent += '<div class="output"><pre>' + output.text.join('').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre></div>';
-                        } else if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
-                            if (output.data['text/html']) {
-                                // Improved logic for handling HTML content
-                                const htmlContent = Array.isArray(output.data['text/html'])
-                                    ? output.data['text/html'].join('')
-                                    : output.data['text/html'];
-                                notebookContent += `<div class="dataframe-wrapper">${htmlContent}</div>`;
-                            } else if (output.data['text/plain']) {
-                                const plainTextOutput = output.data['text/plain'].join('');
-                                const formattedOutput = plainTextOutput
-                                    .replace(/</g, '&lt;')
-                                    .replace(/>/g, '&gt;')
-                                    .replace(/\n/g, '<br>')
-                                    .replace(/ /g, '&nbsp;');
-                                notebookContent += `<div class="output"><pre>${formattedOutput}</pre></div>`;
-                            }
-    
-                            if (output.data['image/png']) {
-                                notebookContent += `<div class="visualization">
-                                    <img src="data:image/png;base64,${output.data['image/png']}" alt="Matplotlib plot">
-                                </div>`;
-                            }
-                        }
-                    });
-                }
+                notebookContent += renderMarkdownCell(cell);
+            } else if (cell.cell_type === 'code') {
+                notebookContent += renderCodeCell(cell);
             }
         });
-    
+
         document.getElementById('notebook-content').innerHTML = notebookContent;
         Prism.highlightAll();
     }
-    
-    fetchAndRenderNotebook();    
+
+    function shouldSkipCell(cell) {
+        if (cell.cell_type === 'markdown' && cell.metadata && cell.metadata.id) {
+            return cellsToSkip.markdown.includes(cell.metadata.id);
+        }
+        if (cell.cell_type === 'code' && cell.metadata && cell.metadata.executionInfo) {
+            return cellsToSkip.code.includes(cell.metadata.executionInfo.timestamp);
+        }
+        return false;
+    }
+
+    function renderMarkdownCell(cell) {
+        let markdownOutput = '';
+        
+        // Check for tags to add
+        if (cell.metadata && cell.metadata.id) {
+            const matchedTag = addTag.markdown.find(tag => tag.id === cell.metadata.id);
+            if (matchedTag) {
+                markdownOutput += matchedTag.tag;
+            }
+        }
+
+        // Handle both array and string source formats
+        const source = Array.isArray(cell.source) ? cell.source.join('') : cell.source;
+        markdownOutput += marked.parse(source);
+        
+        return '<div class="markdown-cell">' + markdownOutput + '</div>';
+    }
+
+    function renderCodeCell(cell) {
+        if (!cell.source || (Array.isArray(cell.source) && cell.source.join('').trim() === '')) {
+            return '';
+        }
+
+        let codeOutput = '';
+        
+        // Add any tags
+        if (cell.metadata && cell.metadata.executionInfo && cell.metadata.executionInfo.timestamp) {
+            const matchedTag = addTag.code.find(tag => 
+                tag.timestamp === cell.metadata.executionInfo.timestamp
+            );
+            if (matchedTag) {
+                codeOutput += matchedTag.tag;
+            }
+        }
+
+        // Render code
+        const source = Array.isArray(cell.source) ? cell.source.join('') : cell.source;
+        codeOutput += '<pre><code class="language-python">' +
+            source.replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+            '</code></pre>';
+
+        // Render outputs
+        if (cell.outputs && cell.outputs.length) {
+            codeOutput += renderOutputs(cell.outputs);
+        }
+
+        return codeOutput;
+    }
+
+    function renderOutputs(outputs) {
+        let outputContent = '';
+        
+        outputs.forEach(output => {
+            if (output.output_type === 'stream' && output.name !== 'stderr') {
+                const text = Array.isArray(output.text) ? output.text.join('') : output.text;
+                // Strip ANSI codes before rendering
+                const cleanText = stripAnsiCodes(text);
+                outputContent += `<div class="output"><pre>${cleanText.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre></div>`;
+            } 
+            else if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
+                if (output.data) {
+                    if (output.data['text/html']) {
+                        const html = Array.isArray(output.data['text/html']) 
+                            ? output.data['text/html'].join('') 
+                            : output.data['text/html'];
+                        outputContent += `<div class="dataframe-wrapper">${html}</div>`;
+                    }
+                    else if (output.data['text/plain']) {
+                        const text = Array.isArray(output.data['text/plain']) 
+                            ? output.data['text/plain'].join('') 
+                            : output.data['text/plain'];
+                        // Strip ANSI codes before rendering
+                        const cleanText = stripAnsiCodes(text);
+                        outputContent += `<div class="output"><pre>${cleanText
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;')
+                            .replace(/\n/g, '<br>')
+                            .replace(/ /g, '&nbsp;')}</pre></div>`;
+                    }
+                    if (output.data['image/png']) {
+                        outputContent += `<div class="visualization">
+                            <img src="data:image/png;base64,${output.data['image/png']}" alt="Matplotlib plot">
+                        </div>`;
+                    }
+                }
+            }
+        });
+
+        return outputContent;
+    }
+
+    fetchAndRenderNotebook();
 });
 
 

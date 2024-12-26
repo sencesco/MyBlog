@@ -1,7 +1,7 @@
 ---
 title: "Back End Development and APIs"
 date: 2024-08-09
-category: "Back-End Development"
+category: "Software Development"
 issuer: "freecodecamp"
 certification_url: "https://www.freecodecamp.org/certification/sencesco/back-end-development-and-apis"
 ---

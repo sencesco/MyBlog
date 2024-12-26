@@ -1,0 +1,33 @@
+---
+layout: null
+permalink: /site_data.json
+---
+
+{
+    "posts": [
+        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+        {% for post in sorted_posts %}
+        {
+            "title": "{{ post.title | escape }}",
+			"date": "{{ post.date | date: "%B %d, %Y" | escape }}",
+			"read_time": "{{ post.read_time }}",
+            "url": "{{ site.baseurl }}{{ post.url }}",
+            "excerpt": "{{ post.excerpt | strip_newlines | escape }}",
+            "categories": "{{ post.categories | join: ', ' }}",
+            "content": "{{ post.content | strip_newlines | escape }}"
+        }{% if forloop.last == false %},{% endif %} 
+        {% endfor %}
+    ],
+    "certifications": [
+        {% assign sorted_certifications = site.certifications | sort: 'date' | reverse %}
+        {% for cer in sorted_certifications %}
+        {
+            "title": "{{ cer.title | escape }}",
+            "date": "{{ cer.date | date: "%B %d, %Y" | escape }}",
+            "issuer": "{{ cer.issuer | escape }}",
+            "certification_url": "{{ cer.certification_url | escape }}",
+            "content": "{{ cer.content | strip_newlines | escape }}"
+        }{% if forloop.last == false %},{% endif %} 
+        {% endfor %}
+    ]
+}

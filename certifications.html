@@ -6,7 +6,7 @@ title: My Certifications
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/certifications.css">
 
 <div class="category-posts">
-    {% assign custom_order = "Machine Learning & AI,Data Structures and Algorithms,Programming,Back-end Development,Database,Operating Systems,Software Development" | split: "," %}
+    {% assign custom_order = "Machine Learning & AI, Data Structures and Algorithms, Programming Language, Database, Operating Systems, Software Development" | split: ", " %}
     {% assign grouped_certifications = site.certifications | group_by: "category" %}
 
     {% for category in custom_order %}
@@ -18,7 +18,7 @@ title: My Certifications
                     <ul>
                         {% assign sorted_certifications = group.items | sort: 'date' | reverse %}
                         {% for certification in sorted_certifications %}
-                            <li>
+                            <li id="{{ certification.title | escape | uri_escape }}"> <!--auto gen idf from serach and point to title -->
                                 <strong>{{ certification.title }}</strong> - {{ certification.date | date: "%B %d, %Y" }},
                                 <span>by: {{ certification.issuer }}</span>
                                 <br>
@@ -37,3 +37,17 @@ title: My Certifications
         {% endif %}
     {% endfor %}
 </div>
+
+<script>
+    // Scroll to specific certification if hash is present in the URL
+    document.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash.substring(1); // Get the fragment identifier
+        if (hash) {
+            const targetElement = document.getElementById(decodeURIComponent(hash));
+            if (targetElement) {
+                // Smooth scroll to the element
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    });
+</script>

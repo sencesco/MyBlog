@@ -3,12 +3,19 @@
         <img src="{{ site.baseurl }}/assets/image/SK_2.png" alt="SK icon">
         <p>Somchai<br>Kradingthong</p>
     </div>
-    <ul>
+    <div id="search-container">
         <!-- Dark mode toggle button -->
         <button id="dark-mode-toggle" aria-label="Toggle dark mode" data-tooltip="Switch to dark mode">
             <span id="dark-mode-icon" class="material-symbols-outlined">dark_mode</span>
         </button>
-    </ul>
+    </div>        
+    <div>
+
+        <form action="{{ site.baseurl }}/search_result.html" method="get">
+            <input id="search" type="text" name="query" placeholder="Search.." oninput="liveRedirect()">
+            <button type="submit" style="display: none;"></button>
+        </form>
+    </div>
     <ul class="sidebar-links">
         <li>
             <a href="{{ site.baseurl }}/">
