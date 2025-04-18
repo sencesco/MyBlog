@@ -7,6 +7,7 @@ date: 2024-09-28
 categories: ["Misc", "Python"]
 image: https://raw.githubusercontent.com/sencesco/Application/main/Password%20Manager%20V.1.2.0/logo.png
 image-content: /assets/image/post_image/pwd_mgr_1.png
+read_time: 2
 github-repo: https://github.com/sencesco/Application/tree/main/Password%20Manager%20V.1.2.0
 ---
 

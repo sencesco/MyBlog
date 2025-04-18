@@ -6,6 +6,7 @@ excerpt: >
 date: 2024-12-22
 categories: ["ML", "DL", "DA", "Python"]
 image: /assets/image/post_image/house_price_dl_1.png
+read_time: 20
 github-repo: https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb
 ---

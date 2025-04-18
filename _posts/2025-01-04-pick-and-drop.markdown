@@ -6,6 +6,7 @@ excerpt: >
 date: 2025-01-04
 categories: ["AI", "ML", "Python"]
 image: /assets/image/post_image/pick-and-drop_1.gif
+read_time: 18
 github-repo: https://github.com/sencesco/Machine-Learning/blob/main/Pick%20and%20Drop%20Game_RL.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/blob/main/Pick%20and%20Drop%20Game_RL.ipynb
 ---

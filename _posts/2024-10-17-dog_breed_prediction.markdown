@@ -6,6 +6,7 @@ excerpt: >
 date: 2024-10-17
 categories: ["ML","DL","Computer Vision", "Python"]
 image: /assets/image/post_image/dog_breed_1.png
+read_time: 6
 github-repo: https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
 ---
