@@ -1,24 +1,26 @@
-require 'time' 		# To handle date and time operations
-require_relative '../assets/rb/calculate_read_time'			# _plugins/read_time_plugin.rb
+require 'open-uri'
+require_relative '../assets/rb/calculate_read_time'
 
-module ReadTimePlugin
-  class Generator < Jekyll::Generator
+module Jekyll
+  class ReadTimeGenerator < Generator
+    safe true
+    priority :low
+
     def generate(site)
-      today = Date.today
-
       site.posts.docs.each do |post|
-        # Get the path of the post file
-        file_path = post.path
+        content = post.content.dup
+        total_read_time = ReadTimeLogic.calculate(content)
 
-        # Check the file's last modified time
-        if File.exist?(file_path)
-          file_mtime = File.mtime(file_path).to_date
-
-          # Only calculate read time for files modified or created today
-          if file_mtime == today
-            calculate_read_time(post.content)
+        # Look for notebook URL inside <div id="notebook-content">
+        if content =~ /<div\s+id=["']notebook-content["'].*?>(.*?)<\/div>/m
+          notebook_url = $1.strip
+          if notebook_url.start_with?("http")
+            notebook_text = ReadTimeLogic.extract_notebook_content(notebook_url)
+            total_read_time += ReadTimeLogic.calculate(notebook_text)
           end
         end
+
+        post.data['read_time'] = total_read_time
       end
     end
   end

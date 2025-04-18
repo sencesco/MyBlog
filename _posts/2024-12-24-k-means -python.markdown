@@ -6,7 +6,6 @@ excerpt: >
 date: 2024-12-24
 categories: ["ML", "DA", "Python"]
 image: /assets/image/post_image/ig_visit_1.png
-read_time: 3
 github-repo: https://github.com/sencesco/Machine-Learning/blob/main/Instagram%20visits%20clustering/K-means%20clustering_Instagram%20visits%20clustering.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/blob/main/Instagram%20visits%20clustering/K-means%20clustering_Instagram%20visits%20clustering.ipynb
 ---
