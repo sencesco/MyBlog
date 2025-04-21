@@ -6,7 +6,7 @@ excerpt: >
 date: 2024-12-22
 categories: ["ML", "DL", "DA", "Python"]
 image: /assets/image/post_image/house_price_dl_1.png
-read_time: 6
+read_time: 7
 github-repo: https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb
 ---
@@ -82,7 +82,7 @@ model.compile(optimizer=Adam(learning_rate=0.01), loss='huber', metrics=['mae', 
 model.summary()</code>
 </pre>
 <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_model_1.png" alt="Accuracy Curves" style="width: 75%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_model_1.png" alt="Model Summary" style="width: 75%;">
 </div>
 
 - **Training and Evaluation**
@@ -98,7 +98,7 @@ model.summary()</code>
     <ul>
         <li>
         You can find all the source code on
-        <a href="https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb" target="_blank">
+        <a href="https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced-dl.ipynb" target="_blank" alt="GitHub-repo/hose-price-advanced-dl">
             GitHub
         </a>
         </li>
@@ -109,7 +109,7 @@ model.summary()</code>
 ## Results
 - **Accuracy and loss curves:** We can see that the red line (train set) and the blue line (val set) are crossing each other, indicating that the model is learning and generalizing well. And I added early stopping and learning rate scheduler to prevent overfitting. And then the model are stopping at 49 epochs from setting with 100 epochs.
     <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_result_1.png" alt="Accuracy Curves" style="width: 100%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_result_1.png" alt="Accuracy and Loss Curves" style="width: 100%;">
     </div>
 
 - **Evaluation with Validation Sets:**
@@ -142,7 +142,7 @@ Root Mean Square Logarithmic Error (RMSLE): 0.1295
 
 - **Residual Analysis:** 
     <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_result_2.png" alt="Accuracy Curves" style="width: 100%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_dl_result_2.png" alt="Residual Analysis Plot" style="width: 100%;">
     </div>
     <pre class="output">
 Detected polynomial order: 5
@@ -177,3 +177,17 @@ Predictions saved to 'submission_ann.csv'
 </pre>
 
 Kaggle will show model performance based on RMSLE (Root Means Square Log Error) that the result on test set is 0.14749
+
+
+## Challenges and Considerations
+- **Data Quality:** In this challenge, I try to avoid outlier handling, and the model can capture them, which is good performance. In the other way, that means a model due to outliers can be overfitting. Then handling or keeping some outliers can make more data good quality and contain some bias for a more flexible model.
+- **Model Architecture:** Even if I add a regularization and normalization layer to avoid overfitting, based on data quality, this model is still overfitting. In addition, the complexity of the model with more neurons in the dense layer may be more complex than this problem.
+- **Model Tuning:** In this model, the setting of the learning rate using `Adam(learning_rate=0.01)`: this is quite high for Adam. Often 0.001 or even 0.0005 is more stable
+
+
+## Conclusion
+&emsp; From my experience with this challenge, outlier handling can be significant to data quality and model bias. Even a deep learning model can capture all the complex relationships but is at high risk of overfitting. So the leverage of data quality and model bias can make a model more efficient and more flexible when predicting with unseen data. 
+
+&emsp; In model architecture, the complexity of the model with more neurons will make the model more complex than less flexible upon sizing of data. So capable of them is also important. And hyperparameter tuning, such as learning rate, etc., can make a model more efficient and more flexible when predicting with unseen data if they are optimal.
+
+&emsp; If you found this project useful, feel free to share it, Thanks for reading!

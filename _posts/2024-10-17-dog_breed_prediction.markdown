@@ -90,7 +90,7 @@ model.compile(loss = 'categorical_crossentropy', optimizer = Adam(0.0001),metric
 model.summary()</code>
 </pre>
 <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_model_1.png" alt="Accuracy Curves" style="width: 75%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_model_1.png" alt="Model Summary" style="width: 75%;">
 </div>
 
 
@@ -106,7 +106,7 @@ model.summary()</code>
     <ul>
         <li>
         You can find all the source code on
-        <a href="https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb" target="_blank">
+        <a href="https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb" target="_blank" alt="GitHub-repo/dog-breed-prediction">
             GitHub
         </a>
         </li>
@@ -145,7 +145,7 @@ print("Originally : ",labels['breed'][np.argmax(Y_test[1])])
 print("Predicted : ",labels['breed'][np.argmax(Y_pred[1])])</code>
 </pre>
 <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_result_3.png" alt="Accuracy Curves" style="width: 48%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_result_3.png" alt="Prediction Accuracy" style="width: 48%;">
 </div>
 <pre class="output">
 Originally :  dhole

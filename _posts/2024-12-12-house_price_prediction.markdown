@@ -52,7 +52,7 @@ colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/b
     - Start with multiple machine learning models and run all models as single prediciton for get each model performance
     - Choose a best model for stacking and blending:
         <div style="text-align: center; margin: 10px auto">
-            <img src="{{ site.baseurl }}/assets/image/post_image/house_price_model_1.png" alt="Accuracy Curves" style="width: 90%;">
+            <img src="{{ site.baseurl }}/assets/image/post_image/house_price_model_1.png" alt="model performance list" style="width: 90%;">
         </div>
     From above figure, I use the base model as:  
         - `RidgeRegression` for simple linear regression prediciton
@@ -63,7 +63,7 @@ colab-link: https://colab.research.google.com/github/sencesco/Machine-Learning/b
     
     - Then Trainning the L0 model together with `StackingRegressor` for get their weight prediction as base model for blending model:
         <div style="text-align: center; margin: 10px auto">
-            <img src="{{ site.baseurl }}/assets/image/post_image/house_price_model_2.png" alt="Accuracy Curves" style="width: 85%;">
+            <img src="{{ site.baseurl }}/assets/image/post_image/house_price_model_2.png" alt="l0 and stacking model score" style="width: 85%;">
         </div>
     - Get the weight of prediction from base model (after training stacking model) then optimize weights and use in blending model to final prediction.
 <pre class="scrollbar-x">
@@ -128,7 +128,7 @@ def blending_model(X_val, y_val, base_models):
     <ul>
         <li>
         You can find all the source code on
-        <a href="https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced.ipynb" target="_blank">
+        <a href="https://github.com/sencesco/Machine-Learning/blob/main/hose-price-advanced.ipynb" target="_blank" alt="GitHub-repo/house-price-advanced">
             GitHub
         </a>
         </li>
@@ -165,7 +165,7 @@ Model are blended, usage time is 00:00:00 (hh:mm:ss).
 
 - **Residual Analysis:** 
     <div style="text-align: center; margin: 10px auto">
-    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_result_1.png" alt="Accuracy Curves" style="width: 100%;">
+    <img src="{{ site.baseurl }}/assets/image/post_image/house_price_result_1.png" alt="Residual Analysis Plot" style="width: 100%;">
     </div>
     <pre class="output">
 Detected polynomial order: 1
