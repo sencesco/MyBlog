@@ -56,7 +56,7 @@ After downloaded, unzip the zip file and run the Password_Manager_main_V.1.2.0.e
     <ul>
         <li>
         You can find all the source code on
-        <a href="https://github.com/sencesco/Application/tree/main/Password%20Manager%20V.1.2.0">
+        <a href="https://github.com/sencesco/Application/tree/main/Password%20Manager%20V.1.2.0" target="_blank">
             GitHub
         </a>
         </li>

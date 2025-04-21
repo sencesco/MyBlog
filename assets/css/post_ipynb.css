@@ -70,7 +70,8 @@ background-color: #4f4f4f;
     background-color: #f5f5f5;
     border-radius: 4px;
     scrollbar-width: thin; 
-    scrollbar-color: inherit; 
+    scrollbar-color: #d8d8d8 #f5f5f5 ;
+    scrollbar-color: hover #cdcdcd;
 }
 
 .dark-mode .output pre {
@@ -118,8 +119,11 @@ table.dataframe {
     display: block;
     overflow-y: auto; 
     flex: 1 1 auto;
+    /* scrollbar-width: thin; 
+    scrollbar-color: inherit;  */
     scrollbar-width: thin; 
-    scrollbar-color: inherit; 
+    scrollbar-color: #d8d8d8 #f5f5f5 ;
+    scrollbar-color: hover #cdcdcd;
 }
 
 .dark-mode table.dataframe {

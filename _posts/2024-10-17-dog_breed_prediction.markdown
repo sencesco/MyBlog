@@ -6,7 +6,7 @@ excerpt: >
 date: 2024-10-17
 categories: ["ML","DL","Computer Vision", "Python"]
 image: /assets/image/post_image/dog_breed_1.png
-read_time: 6
+read_time: 5
 github-repo: https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
 colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
 ---
@@ -25,7 +25,7 @@ colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob
 </div>
 
 ## Overview
-&emsp; In this challenge, I using a deep learning model to predict dog breeds from images. This focuses on building a classifier that can predict 50 dog breeds classes using convolutional neural networks (CNNs). The actual dataset is 120 classes but for computational limitations and to speed up training, I decided to use 50 classes. And using <span class="post-content-link"><a href="https://www.ibm.com/topics/transfer-learning" target="_blank">transfer learning</a></span> with a pretrained model named's MobileNetV2 from Keras Applications.
+&emsp; In this challenge, are dog breed prediction that is a classification problem. I am using a deep learning model to predict dog breeds from images. This focuses on building a classifier that can predict 50 dog breeds classes using convolutional neural networks (CNNs). The actual dataset is 120 classes but for computational limitations and to speed up training, I decided to use 50 classes. And using <span class="post-content-link"><a href="https://www.ibm.com/topics/transfer-learning" target="_blank">transfer learning</a></span> with a pretrained model named's MobileNetV2 from Keras Applications.
 
 
 ## Tech Stack
@@ -48,9 +48,10 @@ colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob
     - Split data into training, validation, and test sets
 
 - **Model Architecture:** 
-    - Using MobileNetV2 with pre-trained weights from ImageNet (`include_top=True`).
+    - Using `MobileNetV2` with pre-trained weights from ImageNet (`include_top=True`).
     - Freeze all CNN layers, meaning their weights won't be updated during training. 
-    - Add several dense layers on top to adapt the model to our dog breed classification task.
+    - Add several dense layers on top of the `MobileNetV2`. this dense layers are fully connected layer for trainable.
+    - Final dense layer with 50 outputs for 50 classes. Using `softmax` activation function for classification task.
 <pre class="scrollbar-x">
 <code class="language-python">from keras.applications import MobileNetV2
 from keras import Sequential
@@ -88,10 +89,14 @@ model.compile(loss = 'categorical_crossentropy', optimizer = Adam(0.0001),metric
 
 model.summary()</code>
 </pre>
+<div style="text-align: center; margin: 10px auto">
+    <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_model_1.png" alt="Accuracy Curves" style="width: 75%;">
+</div>
+
 
 - **Training and Evaluation**
     - Trained using the training and validation sets
-    - Monitored accuracy and loss curves
+    - Monitored accuracy and loss curves from training and validation sets
     - Evaluated model with test set
     - fine-tune the hyperparameters or architecture, if model performance is not good enough for better performance.
 
@@ -101,7 +106,7 @@ model.summary()</code>
     <ul>
         <li>
         You can find all the source code on
-        <a href="https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb">
+        <a href="https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb" target="_blank">
             GitHub
         </a>
         </li>
@@ -122,7 +127,6 @@ model.summary()</code>
 score = model.evaluate(X_test, Y_test)
 print('Accuracy over the test set: \n ', round((score[1]*100), 2), '%')</code>
 </pre>
-
 <pre class="output">
 14/14 [==============================] - 2s 46ms/step
 14/14 [==============================] - 0s 30ms/step - loss: 0.9215 - accuracy: 0.8086
@@ -140,7 +144,6 @@ plt.show()
 print("Originally : ",labels['breed'][np.argmax(Y_test[1])])
 print("Predicted : ",labels['breed'][np.argmax(Y_pred[1])])</code>
 </pre>
-
 <div style="text-align: center; margin: 10px auto">
     <img src="{{ site.baseurl }}/assets/image/post_image/dog_breed_result_3.png" alt="Accuracy Curves" style="width: 48%;">
 </div>
@@ -149,23 +152,12 @@ Originally :  dhole
 Predicted :  dhole
 </pre>
 
+
 ## Challenges and Considerations
 - **Data Quality:** High-quality and diverse data are crucial for training an effective model. If the dataset is biased or lacks variety, the model may not perform well
 - **Model Size vs Accuracy:** MobileNetV2 is lightweight and fast, but may not be the most accurate.
 - **Model Tuning:** Fine-tuning the model's hyperparameters, such as the learning rate, batch size, and number of epochs, is essential for achieving optimal performance.
 - **Overfitting:** To avoid overfitting, use techniques such as dropout, regularization, or data augmentation.
-## Building the Model
-- **Data Preprocessing:** 
-    - Loaded images using Keras
-    - Resized to 224x224 pixels
-    - Normalized pixel values (divided by 255)
-    - Converted labels using LabelBinarizer (One-Hot Encoding)
-    - Split data into training, validation, and test sets
-
-- **Model Architecture:** 
-    - Using MobileNetV2 with pre-trained weights from ImageNet (`include_top=True`).
-    - Freeze all CNN layers, meaning their weights won't be updated during training. 
-    - Add several dense layers on top to adapt the model to our dog breed classification task.
 
 
 ## Conclusion
