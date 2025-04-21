@@ -136,7 +136,7 @@ def blending_model(X_val, y_val, base_models):
 </div>
 
 
-## Result
+## Results
 - **Evaluation with Validation Sets:**
 <pre class="scrollbar-x">
 <code class="language-python">start_time = time.time()
