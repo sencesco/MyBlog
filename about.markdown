@@ -26,7 +26,4 @@ setting tab global variable for site content as content below-->
 {{ site.tabc }} I share the work I'm passionate about, from developing artificial intelligence 
 and other cutting-edge technology to understanding current trends in the field. 
 Additionally, you'll find other projects related to other area in technology.
-<br>
-{{ site.tabc }} I am currently seeking opportunities as an Artificial Intelligence Engineer or
-Machine Learning Engineer, and I am open to other intriguing roles in the tech field.
 
