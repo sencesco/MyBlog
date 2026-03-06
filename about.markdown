@@ -23,7 +23,7 @@ Ex.
 or
 setting tab global variable for site content as content below-->
 
-{{ site.tabc }} I share the work I'm passionate about, from developing artificial intelligence 
+{{ site.tabc }} This is my free space to share the my passionate about, from developing artificial intelligence 
 and other cutting-edge technology to understanding current trends in the field. 
 Additionally, you'll find other projects related to other area in technology.
 
