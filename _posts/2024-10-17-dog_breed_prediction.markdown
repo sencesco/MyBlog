@@ -2,9 +2,9 @@
 layout: post
 title: "Dog Breed Prediction"
 excerpt: >
-    Predicting dog breed from images.
+    End-to-end computer vision workflow for multi-class dog breed classification—image preprocessing, CNN training, and model evaluation on real-world photo inputs.
 date: 2024-10-17
-categories: ["ML","DL","Computer Vision", "Python"]
+categories: ["ML", "DL", "Computer Vision", "Python"]
 image: /assets/image/post_image/dog_breed_1.png
 read_time: 5
 github-repo: https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb

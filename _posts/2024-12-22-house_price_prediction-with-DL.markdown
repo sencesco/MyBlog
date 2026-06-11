@@ -2,7 +2,7 @@
 layout: post
 title: "Housing Price Prediction with Deep Learning"
 excerpt: >
-    Predicting house price advance regression technique using deep learning with tensorflow and keras.
+    Neural network approach to tabular housing price regression—preprocessing, TensorFlow/Keras architecture design, training workflow, and performance comparison against classical ML methods.
 date: 2024-12-22
 categories: ["ML", "DL", "DA", "Python"]
 image: /assets/image/post_image/house_price_dl_1.png

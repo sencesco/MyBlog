@@ -2,7 +2,7 @@
 layout: post
 title: "Pick and Drop Game RL"
 excerpt: >
-    Making a pick and drop game that agents can autoplay with Reinforcement Learning.
+    Custom grid-world environment with reward shaping, Q-table convergence analysis, and Pygame visualization—comparing random-walk baselines against a learned Q-learning policy.
 date: 2025-01-04
 categories: ["AI", "ML", "Python"]
 image: /assets/image/post_image/pick-and-drop_1.gif

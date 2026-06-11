@@ -2,7 +2,7 @@
 layout: post
 title: "Housing Price Prediction"
 excerpt: >
-    Predicting house price advance regression technique using stacking and blending a model.
+    Structured ML pipeline for housing price regression—feature engineering, stacked models, and blending strategies to improve generalization beyond single-model baselines.
 date: 2024-12-12
 categories: ["ML", "DA", "Python"]
 image: /assets/image/post_image/house_price_1.png
