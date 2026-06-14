@@ -57,3 +57,30 @@ pre[class*=language-] {
     scrollbar-width: thin; 
     scrollbar-color: rgb(114, 114, 114) #333; /* Handle and track color */
 }
+
+
+.streamlit-demo-wrapper {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.streamlit-demo-iframe {
+  width: 100%;
+  height: 800px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Mobile screen */
+@media screen and (max-width: 768px) {
+  .streamlit-demo-iframe {
+    height: 490px;
+  }
+}
+
+/* Very small mobile */
+@media screen and (max-width: 480px) {
+  .streamlit-demo-iframe {
+    height: 440px;
+  }
+}

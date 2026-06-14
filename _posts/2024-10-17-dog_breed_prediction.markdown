@@ -1,19 +1,20 @@
 ---
 layout: post
-title: "Dog Breed Prediction"
+title: "Dog Breed Prediction App"
 excerpt: >
-    End-to-end computer vision workflow for multi-class dog breed classification—image preprocessing, CNN training, and model evaluation on real-world photo inputs.
+    End-to-end computer vision application for multi-class dog breed prediction from input images using deep learning for classification—image preprocessing, CNN training, and model evaluation.
 date: 2024-10-17
 categories: ["ML", "DL", "Computer Vision", "Python"]
 image: /assets/image/post_image/dog_breed_1.png
-read_time: 5
-github-repo: https://github.com/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
+read_time: 6
+github-repo: https://github.com/sencesco/dog-breed-prediction-streamlit-app
 colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob/main/dog-breed-prediction.ipynb
 ---
 
 <div id="c-s-hlist">
     <ul>
         <li><a href="#overview">Overview</a></li>
+        <li><a href="#live-demo">Live Demo</a></li>
         <li><a href="#tech-stack">Tech Stack</a></li>
         <li><a href="#dataset">Dataset</a></li>
         <li><a href="#building-the-model">Building the Model</a></li>
@@ -25,7 +26,30 @@ colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob
 </div>
 
 ## Overview
-&emsp; In this challenge, are dog breed prediction that is a classification problem. I am using a deep learning model to predict dog breeds from images. This focuses on building a classifier that can predict 50 dog breeds classes using convolutional neural networks (CNNs). The actual dataset is 120 classes but for computational limitations and to speed up training, I decided to use 50 classes. And using <span class="post-content-link"><a href="https://www.ibm.com/topics/transfer-learning" target="_blank">transfer learning</a></span> with a pretrained model named's MobileNetV2 from Keras Applications.
+&emsp; In this challenge, are dog breed prediction that is a classification problem. I am using a deep learning model to predict dog breeds from images. This focuses on building a classifier that can predict 50 dog breeds classes using convolutional neural networks (CNNs). The actual dataset is 120 classes but for computational limitations and to speed up training, I decided to use 50 classes. And using <span class="post-content-link"><a href="https://www.ibm.com/topics/transfer-learning" target="_blank">transfer learning</a></span> with a pretrained model named's MobileNetV2 from Keras Applications. And I deploy the model using Streamlit.
+
+
+## Live Demo
+
+<p style="margin-bottom: 6px;">
+  You can try the deployed Streamlit application here:
+  <a href="https://dog-breed-prediction-qlqm2.streamlit.app/" target="_blank" rel="noopener noreferrer">
+    🚀 Launch Live Streamlit App
+  </a>
+</p>
+
+<p style="margin-top: 6px;">
+  A live preview is also embedded below. Streamlit apps may not always load correctly inside an iframe, so the live app is opened in a new tab for the best user experience.
+</p>
+
+
+<div class="streamlit-demo-wrapper">
+  <iframe
+    class="streamlit-demo-iframe"
+    src="https://dog-breed-prediction-qlqm2.streamlit.app/?embedded=true"
+    loading="lazy">
+  </iframe>
+</div>
 
 
 ## Tech Stack
@@ -33,6 +57,7 @@ colab-link: https://colab.research.google.com/github/sencesco/Deep-Learning/blob
 - **Data Hadnling:** Pandas, Numpy, Matplotlib, Seaborn, Scikit-learn, keras
 - **Model Training & Evaluation:** Scikit-learn, Keras
 - **Version Control:** Git, GitHub
+- **Deployment:** Streamlit
 
 
 ## Dataset
